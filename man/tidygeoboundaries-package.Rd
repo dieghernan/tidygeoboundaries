@@ -10,6 +10,15 @@
 
 What the package does (one paragraph).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://dieghernan.github.io/tidygeoboundaries/}
+  \item \url{https://github.com/dieghernan/tidygeoboundaries}
+  \item Report bugs at \url{https://github.com/dieghernan/tidygeoboundaries/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Diego Hernangómez \email{diego.hernangomezherrero@gmail.com} (\href{https://orcid.org/0000-0001-8457-4658}{ORCID}) [copyright holder]
 

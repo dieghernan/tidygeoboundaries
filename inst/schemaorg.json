@@ -1,0 +1,38 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "type": "SoftwareSourceCode",
+      "author": {
+        "id": "https://orcid.org/0000-0001-8457-4658"
+      },
+      "codeRepository": "https://github.com/dieghernan/tidygeoboundaries",
+      "copyrightHolder": {
+        "id": "https://orcid.org/0000-0001-8457-4658",
+        "type": "Person",
+        "email": "diego.hernangomezherrero@gmail.com",
+        "familyName": "Hernangómez",
+        "givenName": "Diego"
+      },
+      "description": "What the package does (one paragraph).",
+      "license": "https://spdx.org/licenses/CC-BY-4.0",
+      "name": "tidygeoboundaries: What the Package Does (One Line, Title Case)",
+      "programmingLanguage": {
+        "type": "ComputerLanguage",
+        "name": "R",
+        "url": "https://r-project.org"
+      },
+      "runtimePlatform": "R version 4.5.1 (2025-06-13 ucrt)",
+      "version": "0.0.0.9000"
+    },
+    {
+      "type": "SoftwareSourceCode",
+      "author": {
+        "type": "Person",
+        "familyName": "Hernangómez",
+        "givenName": "Diego"
+      },
+      "name": "{tidygeoboundaries}: What the Package Does (One Line, Title Case)"
+    }
+  ]
+}

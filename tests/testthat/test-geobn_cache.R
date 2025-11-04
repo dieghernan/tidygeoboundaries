@@ -16,7 +16,6 @@ test_that("Test cache online", {
   # Cache dir should be deleted now
   expect_false(dir.exists(testdir))
 
-
   # Reset just for testing all cases
   testdir <- file.path(tempdir(), "tidygeobn", "testthat")
   expect_message(geobn_set_cache_dir(testdir))

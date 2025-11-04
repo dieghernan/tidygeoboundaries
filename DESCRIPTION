@@ -6,12 +6,16 @@ Authors@R:
            comment = c(ORCID = "0000-0001-8457-4658"))
 Description: What the package does (one paragraph).
 License: CC BY 4.0
+URL: https://dieghernan.github.io/tidygeoboundaries/,
+    https://github.com/dieghernan/tidygeoboundaries
+BugReports: https://github.com/dieghernan/tidygeoboundaries/issues
 Depends: 
-    R (>= 3.6.0)
+    R (>= 4.0.0)
 Imports:
     cli,
     countrycode,
     dplyr,
+    geojsonsf,
     httr2 (>= 1.0.0),
     rappdirs,
     sf

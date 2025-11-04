@@ -13,7 +13,10 @@ p <- ggplot(aes(x = mpg, y = wt), data = mtcars) +
   geom_point()
 p <- p + theme_void() + theme_transparent()
 outfile <- "./data-raw/logo.png"
-sticker(p,
-  package = "tidygeoboundaries", filename = outfile,
-  p_family = "opensans", p_fontface = "bold"
+sticker(
+  p,
+  package = "tidygeoboundaries",
+  filename = outfile,
+  p_family = "opensans",
+  p_fontface = "bold"
 )

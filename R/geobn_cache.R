@@ -37,8 +37,12 @@
 #'
 #' Sys.getenv("GEOBN_CACHE_DIR")
 #' @export
-geobn_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
-                                verbose = TRUE) {
+geobn_set_cache_dir <- function(
+  cache_dir,
+  overwrite = FALSE,
+  install = FALSE,
+  verbose = TRUE
+) {
   # Default if not provided
   if (missing(cache_dir) || cache_dir == "") {
     if (verbose) {
@@ -56,7 +60,6 @@ geobn_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
   } else {
     is_temp <- FALSE
   }
-
 
   # Validate
   stopifnot(is.character(cache_dir), is.logical(overwrite), is.logical(install))
@@ -120,7 +123,6 @@ geobn_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
 geobn_hlp_detect_cache_dir <- function() {
   # Try from getenv
   getvar <- Sys.getenv("GEOBN_CACHE_DIR")
-
 
   if (is.null(getvar) || is.na(getvar) || getvar == "") {
     # Not set - tries to retrieve from cache

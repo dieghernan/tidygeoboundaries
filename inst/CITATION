@@ -1,0 +1,17 @@
+year <- format(Sys.time(), "%Y")
+abs <- trimws(gsub("\\s+", " ", meta$Description))
+abs <- gsub("'", "", abs)
+title <- trimws(gsub("'", "", meta$Title, fixed = TRUE))
+pkg <- trimws(meta$Package)
+
+bibentry(
+  "Manual",
+  header = paste0("To cite '", pkg, "' in publications use:"),
+  title = paste0("{", pkg, "}: ", gsub("'", "", title)),
+  author = c(person("Diego", "Hernangómez")),
+  year = year,
+  version = meta$Version,
+  url = unlist(strsplit(meta$URL, ","))[1],
+  abstract = abs,
+  key = paste0("R-", pkg)
+)

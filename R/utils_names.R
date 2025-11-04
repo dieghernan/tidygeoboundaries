@@ -62,9 +62,13 @@ geobn_helper_utf8 <- function(data_sf) {
   names <- names(data_sf)
   g <- sf::st_geometry(data_sf)
 
-  which_geom <- which(vapply(data_sf, function(f) {
-    inherits(f, "sfc")
-  }, TRUE))
+  which_geom <- which(vapply(
+    data_sf,
+    function(f) {
+      inherits(f, "sfc")
+    },
+    TRUE
+  ))
 
   nm <- names(which_geom)
 
@@ -72,6 +76,7 @@ geobn_helper_utf8 <- function(data_sf) {
     set_utf8(sf::st_drop_geometry(data_sf)),
     stringsAsFactors = FALSE
   )
+  data_utf8 <- dplyr::as_tibble(data_utf8)
 
   # Regenerate with right encoding
   data_sf <- sf::st_as_sf(data_utf8, g)

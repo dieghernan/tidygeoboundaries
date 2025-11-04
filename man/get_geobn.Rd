@@ -6,12 +6,11 @@
 \usage{
 get_geobn(
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
-  country = "ALL",
+  country,
   boundary_type = c("ADM0", "ADM1", "ADM2", "ADM3", "ADM4", "ALL"),
   simplified = FALSE,
   metadata = FALSE,
   verbose = FALSE,
-  cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL
 )
@@ -38,9 +37,6 @@ See \strong{Details}.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
-
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
-\strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source

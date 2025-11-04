@@ -33,8 +33,11 @@
 #'
 #' Sys.getenv("GEOBN_CACHE_DIR")
 #' @export
-geobn_clear_cache <- function(config = FALSE, cached_data = TRUE,
-                              verbose = FALSE) {
+geobn_clear_cache <- function(
+  config = FALSE,
+  cached_data = TRUE,
+  verbose = FALSE
+) {
   config_dir <- rappdirs::user_config_dir("tidygeobn", "R")
   data_dir <- geobn_hlp_detect_cache_dir()
 

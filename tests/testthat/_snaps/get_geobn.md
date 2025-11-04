@@ -14,3 +14,11 @@
     Message
       x <https://www.geoboundaries.org/api/current/gbOpen/ATA/ADM2> gives error 404 - Not Found
 
+# NULL output
+
+    Code
+      err2 <- get_geobn(country = "ATA", boundary_type = "ADM2")
+    Message
+      x <https://www.geoboundaries.org/api/current/gbOpen/ATA/ADM2> gives error 404 - Not Found
+      x Nothing to download, returning `NULL`
+

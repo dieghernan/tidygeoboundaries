@@ -4,6 +4,9 @@
   "identifier": "tidygeoboundaries",
   "description": "What the package does (one paragraph).",
   "name": "tidygeoboundaries: What the Package Does (One Line, Title Case)",
+  "relatedLink": "https://dieghernan.github.io/tidygeoboundaries/",
+  "codeRepository": "https://github.com/dieghernan/tidygeoboundaries",
+  "issueTracker": "https://github.com/dieghernan/tidygeoboundaries/issues",
   "license": "https://spdx.org/licenses/CC-BY-4.0",
   "version": "0.0.0.9000",
   "programmingLanguage": {
@@ -11,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.5.1 (2025-06-13)",
+  "runtimePlatform": "R version 4.5.1 (2025-06-13 ucrt)",
   "author": [
     {
       "@type": "Person",
@@ -107,7 +110,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 3.6.0"
+      "version": ">= 4.0.0"
     },
     "2": {
       "@type": "SoftwareApplication",
@@ -147,6 +150,18 @@
     },
     "5": {
       "@type": "SoftwareApplication",
+      "identifier": "geojsonsf",
+      "name": "geojsonsf",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=geojsonsf"
+    },
+    "6": {
+      "@type": "SoftwareApplication",
       "identifier": "httr2",
       "name": "httr2",
       "version": ">= 1.0.0",
@@ -158,7 +173,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=httr2"
     },
-    "6": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -170,7 +185,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "7": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -184,6 +199,22 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "35.472KB",
-  "codeRepository": "https://github.com/dieghernan/tidygeoboundaries"
+  "fileSize": "42.309KB",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2025",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Diego",
+          "familyName": "Hernangómez"
+        }
+      ],
+      "name": "{tidygeoboundaries}: What the Package Does (One Line, Title Case)",
+      "url": "https://dieghernan.github.io/tidygeoboundaries/"
+    }
+  ],
+  "releaseNotes": "https://github.com/dieghernan/tidygeoboundaries/blob/main/NEWS.md",
+  "readme": "https://github.com/dieghernan/tidygeoboundaries/blob/main/README.md"
 }

@@ -22,9 +22,6 @@
 #' @param verbose Logical, displays information. Useful for debugging,
 #'   default is `FALSE`.
 #'
-#' @param cache A logical whether to do caching. Default is `TRUE`. See
-#'   **About caching**.
-#'
 #' @param update_cache A logical whether to update cache. Default is `FALSE`.
 #'  When set to `TRUE` it would force a fresh download of the source
 #'  `.geojson` file.
@@ -50,12 +47,11 @@
 #'
 get_geobn <- function(
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
-  country = "ALL",
+  country,
   boundary_type = c("ADM0", "ADM1", "ADM2", "ADM3", "ADM4", "ALL"),
   simplified = FALSE,
   metadata = FALSE,
   verbose = FALSE,
-  cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL
 ) {
@@ -69,11 +65,13 @@ get_geobn <- function(
   }
 
   # Prepare query urls
-  urls <- paste("https://www.geoboundaries.org/api/current",
-    release_type, country, boundary_type,
+  urls <- paste(
+    "https://www.geoboundaries.org/api/current",
+    release_type,
+    country,
+    boundary_type,
     sep = "/"
   )
-
 
   res <- lapply(urls, function(x) {
     get_geobn_meta(url = x)
@@ -84,6 +82,35 @@ get_geobn <- function(
   if (metadata) {
     return(meta_df)
   }
+
+  if (nrow(meta_df) == 0) {
+    cli::cli_alert_danger("Nothing to download, returning {.code NULL}")
+    return(NULL)
+  }
+
+  bnd_type <- ifelse(simplified, "simplifiedGeometryGeoJSON", "gjDownloadURL")
+  url_bound <- as.vector(meta_df[[bnd_type]])
+
+  # CleanUp
+  url_bound <- unique(url_bound)
+  url_bound <- url_bound[!is.na(url_bound)]
+  url_bound <- url_bound[!is.null(url_bound)]
+
+  url_bound
+  # Call and bind
+  res_sf <- lapply(url_bound, function(x) {
+    get_geobn_sf_single(
+      url = x,
+      subdir = release_type,
+      verbose = verbose,
+      update_cache = update_cache,
+      cache_dir = cache_dir
+    )
+  })
+
+  meta_sf <- dplyr::bind_rows(res_sf)
+
+  meta_sf
 }
 
 
@@ -98,10 +125,13 @@ get_geobn_meta <- function(url) {
   # In error inform and return NULL
   if (httr2::resp_is_error(resp)) {
     # nolint start: Error code for message
-    err <- paste0(c(
-      httr2::resp_status(resp),
-      httr2::resp_status_desc(resp)
-    ), collapse = " - ")
+    err <- paste0(
+      c(
+        httr2::resp_status(resp),
+        httr2::resp_status_desc(resp)
+      ),
+      collapse = " - "
+    )
 
     # nolint end
     cli::cli_alert_danger("{.url {url}} gives error {err}")
@@ -109,10 +139,8 @@ get_geobn_meta <- function(url) {
     return(NULL)
   }
 
-
   # Get the metadata
   resp_body <- httr2::resp_body_json(resp)
-
 
   # Check if single or several responses
   if ("boundaryID" %in% names(resp_body)) {
@@ -121,6 +149,55 @@ get_geobn_meta <- function(url) {
     tb <- lapply(resp_body, dplyr::as_tibble)
     tb <- dplyr::bind_rows(tb)
   }
+  tb[tb == "nan"] <- NA
+  tb$admUnitCount <- as.numeric(tb$admUnitCount)
+  tb$meanVertices <- as.numeric(tb$meanVertices)
+  tb$minVertices <- as.numeric(tb$minVertices)
+  tb$maxVertices <- as.numeric(tb$maxVertices)
+  tb$minVertices <- as.numeric(tb$minVertices)
+  tb$meanPerimeterLengthKM <- as.numeric(tb$meanPerimeterLengthKM)
+  tb$minPerimeterLengthKM <- as.numeric(tb$minPerimeterLengthKM)
+  tb$maxPerimeterLengthKM <- as.numeric(tb$maxPerimeterLengthKM)
+  tb$meanAreaSqKM <- as.numeric(tb$meanAreaSqKM)
+  tb$minAreaSqKM <- as.numeric(tb$minAreaSqKM)
+  tb$maxAreaSqKM <- as.numeric(tb$maxAreaSqKM)
 
   tb
+}
+
+
+get_geobn_sf_single <- function(url, subdir, verbose, update_cache, cache_dir) {
+  filename <- basename(url)
+  # Prepare cache
+  cache_dir <- geobn_hlp_cachedir(cache_dir)
+  cache_dir <- geobn_hlp_cachedir(file.path(cache_dir, subdir))
+
+  # Create destfile and clean
+  file_local <- file.path(cache_dir, filename)
+  file_local <- gsub("//", "/", file_local)
+
+  fileoncache <- file.exists(file_local)
+
+  num <- sf::st_crs(4326)
+
+  # Check if cached
+  if (isFALSE(update_cache) && fileoncache) {
+    if (verbose) cli::cli_alert_info("File {.file {file_local}} already cached")
+  } else {
+    # Download
+    if (verbose) {
+      cli::cli_alert_info("Downloading file from {.url {url}}")
+      cli::cli_alert_info("Cache dir is {.path {cache_dir}}")
+    }
+
+    # Prepare download
+    q <- httr2::request(url)
+    if (verbose) {
+      q <- httr2::req_progress(q)
+    }
+    get <- httr2::req_perform(q, path = file_local) # nolint
+  }
+
+  outsf <- geojsonsf::geojson_sf(file_local, input = num$input, wkt = num$wkt)
+  outsf <- geobn_helper_utf8(outsf)
 }
