@@ -1,0 +1,14 @@
+url: https://dieghernan.github.io/tidygeoboundaries
+
+figures:
+  dpi: 300
+  fig.retina: 2
+
+template:
+  bootstrap: 5
+  package: gitdevr
+  opengraph:
+    twitter:
+      creator: "@dhernangomez"
+      card: summary_large_image
+ 
