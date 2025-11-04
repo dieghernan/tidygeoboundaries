@@ -78,7 +78,7 @@ library(ggplot2)
 
 ggplot(prov) +
   geom_sf() +
-  geom_sf(data = gal, fill = "lightblue"
+  geom_sf(data = gal, fill = "lightblue")
 
 
 ```
