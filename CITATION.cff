@@ -48,6 +48,56 @@ keywords:
 - r-package
 - spatial-data
 references:
+- type: article
+  title: 'geoBoundaries: A global database of political administrative boundaries'
+  authors:
+  - family-names: Runfola
+    given-names: Daniel
+  - family-names: Anderson
+    given-names: Austin
+  - family-names: Baier
+    given-names: Heather
+  - family-names: Crittenden
+    given-names: Matt
+  - family-names: Dowker
+    given-names: Elizabeth
+  - family-names: Fuhrig
+    given-names: Sydney
+  - family-names: Goodman
+    given-names: Seth
+  - family-names: Grimsley
+    given-names: Grace
+  - family-names: Layko
+    given-names: Rachel
+  - family-names: Melville
+    given-names: Graham
+  - family-names: Mulder
+    given-names: Maddy
+  - family-names: Oberman
+    given-names: Rachel
+  - family-names: Panganiban
+    given-names: Joshua
+  - family-names: Peck
+    given-names: Andrew
+  - family-names: Seitz
+    given-names: Leigh
+  - family-names: Shea
+    given-names: Sylvia
+  - family-names: Slevin
+    given-names: Hannah
+  - family-names: Youngerman
+    given-names: Rebecca
+  - family-names: Hobbs
+    given-names: Lauren
+  doi: 10.1371/journal.pone.0231866
+  journal: PLOS ONE
+  publisher:
+    name: Public Library of Science
+  year: '2020'
+  month: '4'
+  volume: '15'
+  issue: '4'
+  start: 1-9
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
   notes: Depends

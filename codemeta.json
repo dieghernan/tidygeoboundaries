@@ -200,7 +200,7 @@
     "SystemRequirements": null
   },
   "keywords": ["administrative-boundaries", "api", "geoboundaries", "r", "r-package", "spatial-data"],
-  "fileSize": "64.191KB",
+  "fileSize": "65.675KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -214,6 +214,122 @@
       ],
       "name": "{tidygeoboundaries}: Download Map Data from Geoboundaries",
       "url": "https://dieghernan.github.io/tidygeoboundaries/"
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "datePublished": "2020",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Daniel",
+          "familyName": "Runfola"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Austin",
+          "familyName": "Anderson"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Heather",
+          "familyName": "Baier"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Matt",
+          "familyName": "Crittenden"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Elizabeth",
+          "familyName": "Dowker"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Sydney",
+          "familyName": "Fuhrig"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Seth",
+          "familyName": "Goodman"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Grace",
+          "familyName": "Grimsley"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Rachel",
+          "familyName": "Layko"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Graham",
+          "familyName": "Melville"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Maddy",
+          "familyName": "Mulder"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Rachel",
+          "familyName": "Oberman"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Joshua",
+          "familyName": "Panganiban"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Andrew",
+          "familyName": "Peck"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Leigh",
+          "familyName": "Seitz"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Sylvia",
+          "familyName": "Shea"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Hannah",
+          "familyName": "Slevin"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Rebecca",
+          "familyName": "Youngerman"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Lauren",
+          "familyName": "Hobbs"
+        }
+      ],
+      "name": "geoBoundaries: A global database of political administrative boundaries",
+      "identifier": "10.1371/journal.pone.0231866",
+      "pagination": "1-9",
+      "@id": "https://doi.org/10.1371/journal.pone.0231866",
+      "sameAs": "https://doi.org/10.1371/journal.pone.0231866",
+      "isPartOf": {
+        "@type": "PublicationIssue",
+        "issueNumber": "4",
+        "datePublished": "2020",
+        "isPartOf": {
+          "@type": ["PublicationVolume", "Periodical"],
+          "volumeNumber": "15",
+          "name": "PLOS ONE"
+        }
+      }
     }
   ],
   "releaseNotes": "https://github.com/dieghernan/tidygeoboundaries/blob/main/NEWS.md",
