@@ -40,9 +40,26 @@
 #'
 #' @examplesIf httr2::is_online()
 #'
+#' \donttest{
+# Map municipalities in Sri Lanka
+#' sri_lanka <- get_geobn(
+#'   country = "Sri Lanka", boundary_type = "ADM3",
+#'   simplified = TRUE
+#' )
+#'
+#' sri_lanka
+#'
+#' library(ggplot2)
+#' ggplot(sri_lanka) +
+#'   geom_sf()
+#' }
+#'
 #' # Metadata
 #' library(dplyr)
-#' get_geobn(country = "Spain", boundary_type = "ADM0", metadata = TRUE) %>%
+#' get_geobn(
+#'   country = "Sri Lanka", boundary_type = "ADM3",
+#'   metadata = TRUE
+#' ) %>%
 #'   glimpse()
 #'
 get_geobn <- function(

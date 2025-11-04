@@ -5,7 +5,8 @@ library(tidygeoboundaries)
 
 sri <- get_geobn(
   country = "Sri Lanka",
-  boundary_type = "ADM3", simplified = TRUE
+  boundary_type = "ADM3",
+  simplified = TRUE
 )
 
 library(hexSticker)
