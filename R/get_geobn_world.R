@@ -5,8 +5,9 @@
 #' [Attribution](https://www.geoboundaries.org/index.html#usage) is required
 #' for all uses of this dataset.
 #'
-#' This function returns a global composite of the required administration level,
-#' clipped to international boundaries, with gaps filled between borders.
+#' This function returns a global composite of the required administration
+#' level, clipped to international boundaries, with gaps filled between
+#' borders.
 #'
 #' @references
 #' geoboundaries API Service <https://www.geoboundaries.org/api.html>.
