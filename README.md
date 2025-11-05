@@ -59,14 +59,14 @@ install.packages("geobounds",
 ``` r
 library(geobounds)
 
-spain_bounds <- get_geobn("ESP")
-spain_adm1 <- get_geobn("ESP", boundary_type = "ADM1")
+sri_lanka_bounds <- get_geobn("Sri Lanka")
+sri_lanka_adm1 <- get_geobn("Sri Lanka", boundary_type = "ADM1")
 
 library(sf)
-#> Linking to GEOS 3.13.1, GDAL 3.11.0, PROJ 9.6.0; sf_use_s2() is TRUE
+#> Linking to GEOS 3.13.1, GDAL 3.10.2, PROJ 9.5.1; sf_use_s2() is TRUE
 library(dplyr)
 #> 
-#> Attaching package: 'dplyr'
+#> Adjuntando el paquete: 'dplyr'
 #> The following objects are masked from 'package:stats':
 #> 
 #>     filter, lag
@@ -74,14 +74,24 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 
-gal <- spain_adm1 %>%
-  filter(shapeName == "Galicia")
+# Central
+central <- sri_lanka_adm1 %>%
+  filter(shapeISO == "LK-2")
 
 library(ggplot2)
 
-ggplot(spain_bounds) +
-  geom_sf() +
-  geom_sf(data = gal, fill = "lightblue")
+ggplot(sri_lanka_bounds) +
+  geom_sf(fill = "#F6E1B9") +
+  geom_sf(data = sri_lanka_adm1, fill = NA) +
+  geom_sf(data = central, fill = "#C12838") +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = "#C7E7FB")
+  ) +
+  labs(
+    title = "Central Province, Sri Lanka",
+    caption = "Source: geoBoundaries"
+  )
 ```
 
 <img src="man/figures/README-simple_plot-1.png" width="100%" />
@@ -117,6 +127,7 @@ specific dataset metadata for licensing details.
 ## Citation
 
 <p>
+
 Hernangómez D (2025). <em>geobounds: Download Map Data from
 geoBoundaries</em>.
 <a href="https://dieghernan.github.io/geobounds/">https://dieghernan.github.io/geobounds/</a>.
