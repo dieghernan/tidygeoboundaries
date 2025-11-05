@@ -185,22 +185,6 @@ references:
   doi: 10.32614/CRAN.package.httr2
   version: '>= 1.0.0'
 - type: software
-  title: rappdirs
-  abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
-    and Logs'
-  notes: Imports
-  url: https://rappdirs.r-lib.org
-  repository: https://CRAN.R-project.org/package=rappdirs
-  authors:
-  - family-names: Ratnakumar
-    given-names: Sridhar
-  - family-names: Mick
-    given-names: Trent
-  - family-names: Davis
-    given-names: Trevor
-  year: '2025'
-  doi: 10.32614/CRAN.package.rappdirs
-- type: software
   title: sf
   abstract: 'sf: Simple Features for R'
   notes: Imports
@@ -213,6 +197,16 @@ references:
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2025'
   doi: 10.32614/CRAN.package.sf
+- type: software
+  title: tools
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2025'
 - type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'

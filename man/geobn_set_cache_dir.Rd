@@ -53,7 +53,7 @@ geobn_set_cache_dir(verbose = TRUE)
 Sys.getenv("GEOBN_CACHE_DIR")
 }
 \seealso{
-\code{\link[rappdirs:user_data_dir]{rappdirs::user_config_dir()}}
+\code{\link[tools:userdir]{tools::R_user_dir()}}
 
 Other cache utilities: 
 \code{\link{geobn_clear_cache}()},

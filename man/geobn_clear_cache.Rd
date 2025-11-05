@@ -24,7 +24,7 @@ Invisible. This function is called for its side effects.
 data and configuration, specifically:
 \itemize{
 \item Deletes the \pkg{geobounds} config directory
-(\code{rappdirs::user_config_dir("geobounds", "R")}).
+(\code{tools::R_user_dir("geobounds", "config")}).
 \item Deletes the \code{cache_dir} directory.
 \item Deletes the values on stored on \code{Sys.getenv("GEOBN_CACHE_DIR")} and
 \code{options(mapSpain_cache_dir)}.

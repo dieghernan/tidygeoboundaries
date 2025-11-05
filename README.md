@@ -67,10 +67,10 @@ sri_lanka_adm2 <- get_geobn("Sri Lanka", boundary_type = "ADM2")
 sri_lanka_adm3 <- get_geobn("Sri Lanka", boundary_type = "ADM3")
 
 library(sf)
-#> Linking to GEOS 3.13.1, GDAL 3.10.2, PROJ 9.5.1; sf_use_s2() is TRUE
+#> Linking to GEOS 3.13.1, GDAL 3.11.0, PROJ 9.6.0; sf_use_s2() is TRUE
 library(dplyr)
 #> 
-#> Adjuntando el paquete: 'dplyr'
+#> Attaching package: 'dplyr'
 #> The following objects are masked from 'package:stats':
 #> 
 #>     filter, lag
@@ -121,7 +121,6 @@ specific dataset metadata for licensing details.
 ## Citation
 
 <p>
-
 Hernangómez D (2025). <em>geobounds: Download Map Data from
 geoBoundaries</em>.
 <a href="https://dieghernan.github.io/geobounds/">https://dieghernan.github.io/geobounds/</a>.

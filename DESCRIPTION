@@ -23,8 +23,8 @@ Imports:
     dplyr,
     geojsonsf,
     httr2 (>= 1.0.0),
-    tools,
-    sf
+    sf,
+    tools
 Suggests: 
     ggplot2,
     jsonlite,
