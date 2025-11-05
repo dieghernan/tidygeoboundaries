@@ -57,6 +57,7 @@ library(ggplot2)
 
 ggplot(world) +
   geom_sf() +
+  coord_sf(expand = FALSE) +
   labs(caption = "Source: www.geoboundaries.org")
 }
 \dontshow{\}) # examplesIf}
