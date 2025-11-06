@@ -8,6 +8,9 @@
 \alias{get_geobn_adm3}
 \alias{get_geobn_adm4}
 \title{Get country files from geoBoundaries for a given administration level}
+\source{
+geoboundaries API Service \url{https://www.geoboundaries.org/api.html}.
+}
 \usage{
 get_geobn_adm0(
   country,
@@ -134,8 +137,6 @@ ggplot(lev2) +
 \dontshow{\}) # examplesIf}
 }
 \references{
-geoboundaries API Service \url{https://www.geoboundaries.org/api.html}.
-
 Runfola, D. et al. (2020) geoBoundaries: A global database of political
 administrative boundaries. \emph{PLoS ONE} \strong{15}(4): e0231866.
 \doi{10.1371/journal.pone.0231866}.

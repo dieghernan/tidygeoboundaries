@@ -9,9 +9,10 @@
 #' level, clipped to international boundaries, with gaps filled between
 #' borders.
 #'
-#' @references
+#' @source
 #' geoboundaries API Service <https://www.geoboundaries.org/api.html>.
 #'
+#' @references
 #' Runfola, D. et al. (2020) geoBoundaries: A global database of political
 #' administrative boundaries. *PLoS ONE* **15**(4): e0231866.
 #' \doi{10.1371/journal.pone.0231866}.
@@ -74,7 +75,7 @@ get_geobn_world <- function(
 
   urlend <- paste(baseurl, "CGAZ", fname, sep = "/")
 
-  world <- get_geobn_sf_single(
+  world <- hlp_get_geobn_sf_single(
     urlend,
     subdir = "CGAZ",
     cache_dir = cache_dir,

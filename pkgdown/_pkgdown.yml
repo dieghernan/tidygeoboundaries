@@ -7,6 +7,8 @@ figures:
 template:
   bootstrap: 5
   package: gitdevr
+  params:
+    ganalytics: 'G-LTNVYVLK36'
   opengraph:
     twitter:
       creator: "@dhernangomez"
@@ -17,14 +19,27 @@ authors:
   geoBoundaries:
     href: https://www.geoboundaries.org/
 
+home:
+  title: geobounds | R package for download geodata from geoBoundaries
+  description: >
+    geobounds is a R API package that helps to retrieve data from geoBounds.
+    Several administration levels available. See Runfola, D. et al. (2020)
+    geoBoundaries: A global database of political administrative boundaries.
+    PLoS ONE 15(4): e0231866. https://doi.org/10.1371/journal.pone.0231866
+
 reference:
-  - title: Political
+  - title: Boundaries
     desc: >
       These functions return <a href="https://CRAN.R-project.org/package=sf"
       class="external-link"><span class="pkg">sf</span></a> objects with
       political boundaries.
     contents:
       - has_concept("API functions")
+  - title: Metadata
+    desc: >
+      These functions return metadata in tibble format.
+    contents:
+      - has_concept("metadata functions")
   - title: Cache management
     contents:
       - has_concept("cache utilities")

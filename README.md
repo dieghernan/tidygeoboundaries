@@ -62,9 +62,9 @@ install.packages("geobounds",
 ``` r
 library(geobounds)
 
-sri_lanka_adm1 <- get_geobn("Sri Lanka", boundary_type = "ADM1")
-sri_lanka_adm2 <- get_geobn("Sri Lanka", boundary_type = "ADM2")
-sri_lanka_adm3 <- get_geobn("Sri Lanka", boundary_type = "ADM3")
+sri_lanka_adm1 <- get_geobn_adm1("Sri Lanka")
+sri_lanka_adm2 <- get_geobn_adm2("Sri Lanka")
+sri_lanka_adm3 <- get_geobn_adm3("Sri Lanka")
 
 library(sf)
 library(dplyr)
@@ -73,7 +73,7 @@ library(ggplot2)
 
 ggplot(sri_lanka_adm3) +
   geom_sf(fill = "#DFDFDF", color = "white") +
-  geom_sf(data = sri_lanka_adm2, fill = NA, color = "grey30") +
+  geom_sf(data = sri_lanka_adm2, fill = NA, color = "#F0B323") +
   geom_sf(data = sri_lanka_adm1, fill = NA, color = "black") +
   labs(caption = "Source: www.geoboundaries.org") +
   theme_void()
@@ -112,6 +112,7 @@ specific dataset metadata for licensing details.
 ## Citation
 
 <p>
+
 Hernangómez D (2025). <em>geobounds: Download Map Data from
 geoBoundaries</em>.
 <a href="https://dieghernan.github.io/geobounds/">https://dieghernan.github.io/geobounds/</a>.

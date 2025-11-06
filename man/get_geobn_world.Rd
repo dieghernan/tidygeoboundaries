@@ -3,6 +3,9 @@
 \name{get_geobn_world}
 \alias{get_geobn_world}
 \title{Get global composites data from geoBoundaries}
+\source{
+geoboundaries API Service \url{https://www.geoboundaries.org/api.html}.
+}
 \usage{
 get_geobn_world(
   boundary_type = c("ADM0", "ADM1", "ADM2"),
@@ -64,8 +67,6 @@ ggplot(world) +
 \dontshow{\}) # examplesIf}
 }
 \references{
-geoboundaries API Service \url{https://www.geoboundaries.org/api.html}.
-
 Runfola, D. et al. (2020) geoBoundaries: A global database of political
 administrative boundaries. \emph{PLoS ONE} \strong{15}(4): e0231866.
 \doi{10.1371/journal.pone.0231866}.

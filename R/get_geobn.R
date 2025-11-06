@@ -37,9 +37,10 @@
 #' - With `metadata = FALSE`: A [`sf`][sf::st_sf] object.
 #' - With `metadata = TRUE`: A tibble.
 #'
-#' @references
+#' @source
 #' geoboundaries API Service <https://www.geoboundaries.org/api.html>.
 #'
+#' @references
 #' Runfola, D. et al. (2020) geoBoundaries: A global database of political
 #' administrative boundaries. *PLoS ONE* **15**(4): e0231866.
 #' \doi{10.1371/journal.pone.0231866}.
@@ -112,7 +113,7 @@ get_geobn <- function(
   )
 
   res <- lapply(urls, function(x) {
-    get_geobn_meta(url = x)
+    hlp_get_geobn_meta(url = x)
   })
 
   meta_df <- dplyr::bind_rows(res)
@@ -137,7 +138,7 @@ get_geobn <- function(
   url_bound
   # Call and bind
   res_sf <- lapply(url_bound, function(x) {
-    get_geobn_sf_single(
+    hlp_get_geobn_sf_single(
       url = x,
       subdir = release_type,
       verbose = verbose,
@@ -152,7 +153,7 @@ get_geobn <- function(
 }
 
 
-get_geobn_meta <- function(url) {
+hlp_get_geobn_meta <- function(url) {
   # Prepare query
   q <- httr2::request(url)
   q <- httr2::req_error(q, is_error = function(x) {
@@ -224,7 +225,7 @@ get_geobn_meta <- function(url) {
 }
 
 
-get_geobn_sf_single <- function(
+hlp_get_geobn_sf_single <- function(
   url,
   subdir,
   verbose,
