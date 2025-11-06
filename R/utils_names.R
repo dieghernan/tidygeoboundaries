@@ -27,7 +27,7 @@ geobn_helper_countrynames <- function(names, out = "iso3c") {
   if (linit != lend) {
     ff <- names[is.na(outnames)] # nolint
     cli::cli_alert_warning("Countries ommited: {ff}")
-    cli::cli_alert_info("Review the names of switch to ISO3 codes.")
+    cli::cli_alert_info("Review the names or switch to ISO3 codes.")
   }
   outnames2
 }

@@ -73,7 +73,7 @@ geobn_set_cache_dir <- function(
   }
 
   if (verbose) {
-    cli::cli_alert_info(
+    cli::cli_alert_success(
       "{.pkg geobounds} cache dir is {.path {cache_dir}}."
     )
   }
