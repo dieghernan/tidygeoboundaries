@@ -249,7 +249,7 @@ hlp_get_geobn_sf_single <- function(
   # Check if cached
   if (isFALSE(update_cache) && fileoncache) {
     if (verbose) {
-    cli::cli_alert_success("File {.file {file_local}} already cached")
+      cli::cli_alert_success("File {.file {file_local}} already cached")
     }
   } else {
     # Download
