@@ -9,7 +9,7 @@
 #' @return a vector of names
 #'
 #' @noRd
-geobn_helper_countrynames <- function(names, out = "iso3c") {
+gb_helper_countrynames <- function(names, out = "iso3c") {
   names <- as.character(names[!is.na(names)])
   maxname <- max(nchar(names))
   if (maxname > 3) {
@@ -43,7 +43,7 @@ geobn_helper_countrynames <- function(names, out = "iso3c") {
 #' @source Extracted from [`sf`][sf::st_sf] package.
 #'
 #' @noRd
-geobn_helper_utf8 <- function(data_sf) {
+gb_helper_utf8 <- function(data_sf) {
   # From sf/read.R - https://github.com/r-spatial/sf/blob/master/R/read.R
   set_utf8 <- function(x) {
     n <- names(x)

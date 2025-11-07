@@ -11,14 +11,14 @@
 #' - Deletes the \pkg{geobounds} config directory
 #'   (`tools::R_user_dir("geobounds", "config")`).
 #' - Deletes the `cache_dir` directory.
-#' - Deletes the values on stored on `Sys.getenv("GEOBN_CACHE_DIR")` and
+#' - Deletes the values on stored on `Sys.getenv("GEOBOUNDS_CACHE_DIR")` and
 #'   `options(mapSpain_cache_dir)`.
 #'
 #' @param config Logical. If `TRUE`, will delete the configuration folder of
 #'   \pkg{geobounds}.
 #' @param cached_data Logical. If `TRUE`, it will delete your `cache_dir` and
 #'   all its content.
-#' @inheritParams geobn_set_cache_dir
+#' @inheritParams gb_set_cache_dir
 #'
 #' @details
 #' This is an overkill function that is intended to reset your status
@@ -28,18 +28,20 @@
 #'
 #' # Don't run this! It would modify your current state
 #' \dontrun{
-#' geobn_clear_cache(verbose = TRUE)
+#' gb_clear_cache(quiet = FALSE)
 #' }
 #'
-#' Sys.getenv("GEOBN_CACHE_DIR")
+#' Sys.getenv("GEOBOUNDS_CACHE_DIR")
 #' @export
-geobn_clear_cache <- function(
+gb_clear_cache <- function(
   config = FALSE,
   cached_data = TRUE,
-  verbose = FALSE
+  quiet = TRUE
 ) {
+  verbose <- isFALSE(quiet)
+
   config_dir <- tools::R_user_dir("geobounds", "config")
-  data_dir <- geobn_hlp_detect_cache_dir()
+  data_dir <- gb_hlp_detect_cache_dir()
 
   # nocov start
   if (config && dir.exists(config_dir)) {
@@ -60,7 +62,7 @@ geobn_clear_cache <- function(
     }
   }
 
-  Sys.setenv(GEOBN_CACHE_DIR = "")
+  Sys.setenv(GEOBOUNDS_CACHE_DIR = "")
 
   # Reset cache dir
   invisible()

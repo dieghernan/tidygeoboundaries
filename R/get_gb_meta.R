@@ -14,35 +14,35 @@
 #'
 #' @family metadata functions
 #'
-#' @inheritParams get_geobn
+#' @inheritParams get_gb
 #'
 #' @export
 #'
-#' @seealso [get_geobn()]
+#' @seealso [get_gb()]
 #' @details
 #'
-#' Equivalent to `get_geobn(..., metadata = TRUE)`.
+#' Equivalent to `get_gb(..., metadata = TRUE)`.
 #'
 #' @examplesIf httr2::is_online()
 #' # Get ADM4 levels
 #'
 #' library(dplyr)
 #'
-#' get_geobn_meta(boundary_type = "ADM4") %>%
+#' get_gb_meta(adm_lvl = "ADM4") %>%
 #'   glimpse()
 #'
-get_geobn_meta <- function(
+get_gb_meta <- function(
   country = "ALL",
-  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
-  boundary_type = c("ALL", "ADM0", "ADM1", "ADM2", "ADM3", "ADM4")
+  adm_lvl = c("ALL", "ADM0", "ADM1", "ADM2", "ADM3", "ADM4"),
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative")
 ) {
   release_type <- match.arg(release_type)
-  boundary_type <- match.arg(boundary_type)
+  adm_lvl <- match.arg(adm_lvl)
 
-  metadata <- get_geobn(
+  metadata <- get_gb(
     country = country,
     release_type = release_type,
-    boundary_type = boundary_type,
+    adm_lvl = adm_lvl,
     metadata = TRUE
   )
 

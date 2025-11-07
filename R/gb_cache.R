@@ -9,14 +9,14 @@
 #' @description
 #' This function will store your `cache_dir` path on your local machine and
 #' would load it for future sessions. Type
-#' `Sys.getenv("GEOBN_CACHE_DIR")` to find your cached path.
+#' `Sys.getenv("GEOBOUNDS_CACHE_DIR")` to find your cached path.
 #'
 #' Alternatively, you can store the `cache_dir` manually with the following
 #' options:
-#'  - Run `Sys.setenv(GEOBN_CACHE_DIR = "cache_dir")`. You would need to
+#'  - Run `Sys.setenv(GEOBOUNDS_CACHE_DIR = "cache_dir")`. You would need to
 #'    run this command on each session (Similar to `install = FALSE`).
 #'  - Write this line on your .Renviron file:
-#'    `GEOBN_CACHE_DIR = "value_for_cache_dir"` (same behavior than
+#'    `GEOBOUNDS_CACHE_DIR = "value_for_cache_dir"` (same behavior than
 #'    `install = TRUE`). This would store your `cache_dir` permanently.
 #'
 #' @param cache_dir A path to a cache directory. On missing value the function
@@ -25,24 +25,25 @@
 #'   machine for use in future sessions.  Defaults to `FALSE.` If `cache_dir`
 #'   is `FALSE` this parameter is set to `FALSE` automatically.
 #' @param overwrite Logical. If this is set to `TRUE`, it will overwrite an
-#'   existing `GEOBN_CACHE_DIR` that you already have in local machine.
-#' @param verbose Logical, displays information. Useful for debugging, default
-#'   is `FALSE`.
+#'   existing `GEOBOUNDS_CACHE_DIR` that you already have in local machine.
+#'
+#' @inheritParams get_gb
 #' @examples
 #'
 #' # Don't run this! It would modify your current state
 #' \dontrun{
-#' geobn_set_cache_dir(verbose = TRUE)
+#' gb_set_cache_dir(quiet = FALSE)
 #' }
 #'
-#' Sys.getenv("GEOBN_CACHE_DIR")
+#' Sys.getenv("GEOBOUNDS_CACHE_DIR")
 #' @export
-geobn_set_cache_dir <- function(
+gb_set_cache_dir <- function(
   cache_dir,
   overwrite = FALSE,
   install = FALSE,
-  verbose = TRUE
+  quiet = FALSE
 ) {
+  verbose <- isFALSE(quiet)
   # Default if not provided
   if (missing(cache_dir) || cache_dir == "") {
     if (verbose) {
@@ -88,14 +89,14 @@ geobn_set_cache_dir <- function(
       dir.create(config_dir, recursive = TRUE)
     }
 
-    geobounds_file <- file.path(config_dir, "GEOBN_CACHE_DIR")
+    geobounds_file <- file.path(config_dir, "GEOBOUNDS_CACHE_DIR")
 
     if (!file.exists(geobounds_file) || overwrite == TRUE) {
       # Create file if it doesn't exist
       writeLines(cache_dir, con = geobounds_file)
     } else {
       cli::cli_abort(
-        paste0(
+        c(
           "A {.arg cache_dir}, path already exists. You can overwrite it with ",
           "the argument {.arg overwrite = TRUE}"
         )
@@ -113,22 +114,22 @@ geobn_set_cache_dir <- function(
     }
   }
 
-  Sys.setenv(GEOBN_CACHE_DIR = cache_dir)
+  Sys.setenv(GEOBOUNDS_CACHE_DIR = cache_dir)
   invisible(cache_dir)
 }
 
 #' Detect cache dir for \pkg{geobounds}
 #'
 #' @noRd
-geobn_hlp_detect_cache_dir <- function() {
+gb_hlp_detect_cache_dir <- function() {
   # Try from getenv
-  getvar <- Sys.getenv("GEOBN_CACHE_DIR")
+  getvar <- Sys.getenv("GEOBOUNDS_CACHE_DIR")
 
   if (is.null(getvar) || is.na(getvar) || getvar == "") {
     # Not set - tries to retrieve from cache
     cache_config <- file.path(
       tools::R_user_dir("geobounds", "config"),
-      "GEOBN_CACHE_DIR"
+      "GEOBOUNDS_CACHE_DIR"
     )
 
     # nocov start
@@ -137,18 +138,18 @@ geobn_hlp_detect_cache_dir <- function() {
 
       # Case on empty cached path - would default
       if (any(is.null(cached_path), is.na(cached_path), cached_path == "")) {
-        cache_dir <- geobn_set_cache_dir(overwrite = TRUE, verbose = FALSE)
+        cache_dir <- gb_set_cache_dir(overwrite = TRUE, quiet = TRUE)
         return(cache_dir)
       }
 
       # 3. Return from cached path
-      Sys.setenv(GEOBN_CACHE_DIR = cached_path)
+      Sys.setenv(GEOBOUNDS_CACHE_DIR = cached_path)
       cached_path
       # nocov end
     } else {
       # 4. Default cache location
 
-      cache_dir <- geobn_set_cache_dir(overwrite = TRUE, verbose = FALSE)
+      cache_dir <- gb_set_cache_dir(overwrite = TRUE, quiet = TRUE)
       cache_dir
     }
   } else {
@@ -160,10 +161,10 @@ geobn_hlp_detect_cache_dir <- function() {
 #'
 #'
 #' @noRd
-geobn_hlp_cachedir <- function(cache_dir = NULL) {
+gb_hlp_cachedir <- function(cache_dir = NULL) {
   # Check cache dir from options if not set
   if (is.null(cache_dir)) {
-    cache_dir <- geobn_hlp_detect_cache_dir()
+    cache_dir <- gb_hlp_detect_cache_dir()
   }
 
   # Create cache dir if needed
@@ -178,7 +179,7 @@ geobn_hlp_cachedir <- function(cache_dir = NULL) {
 #' @description
 #'
 #' Helper function to detect the current cache folder. See
-#' [geobn_set_cache_dir()].
+#' [gb_set_cache_dir()].
 #'
 #'
 #' @param x Ignored.
@@ -187,14 +188,14 @@ geobn_hlp_cachedir <- function(cache_dir = NULL) {
 #'
 #' @export
 #'
-#' @rdname geobn_detect_cache_dir
+#' @rdname gb_detect_cache_dir
 #' @family cache utilities
 #' @examples
-#' geobn_detect_cache_dir()
+#' gb_detect_cache_dir()
 #'
-geobn_detect_cache_dir <- function(x = NULL) {
+gb_detect_cache_dir <- function(x = NULL) {
   # Cheat linters
   cd <- x
-  cd <- geobn_hlp_detect_cache_dir()
+  cd <- gb_hlp_detect_cache_dir()
   cd
 }

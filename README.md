@@ -29,7 +29,8 @@ polygons). Using this package, you can:
   country → region → district) from geoBoundaries
 - Use tidyverse / **sf** workflows in **R** to map, analyse and join
   these boundaries with your own data
-- Work in an open-data context (geoBoundaries uses CC BY-4.0 / open
+- Work in an open-data context (geoBoundaries uses [CC
+  BY-4.0](https://creativecommons.org/licenses/by/4.0/)) / open
   licences)
 
 In short: if you work with geospatial boundaries in **R** (shape files,
@@ -62,9 +63,9 @@ install.packages("geobounds",
 ``` r
 library(geobounds)
 
-sri_lanka_adm1 <- get_geobn_adm1("Sri Lanka")
-sri_lanka_adm2 <- get_geobn_adm2("Sri Lanka")
-sri_lanka_adm3 <- get_geobn_adm3("Sri Lanka")
+sri_lanka_adm1 <- get_gb_adm1("Sri Lanka")
+sri_lanka_adm2 <- get_gb_adm2("Sri Lanka")
+sri_lanka_adm3 <- get_gb_adm3("Sri Lanka")
 
 library(sf)
 library(dplyr)
@@ -81,8 +82,9 @@ ggplot(sri_lanka_adm3) +
 
 <img src="man/figures/README-simple_plot-1.png" alt="Map of all administration levels for Sri Lanka" width="100%" />
 
-> Note: This is a simple illustration. See the package vignettes for
-> full details on parameters, filters, caching, and advanced usage.
+> Note: This is a simple illustration. See the [package
+> vignettes](https://dieghernan.github.io/geobounds/articles/geobounds.html)
+> for full details on parameters, filters, caching, and advanced usage.
 
 ## Documentation & Resources
 
@@ -94,15 +96,16 @@ ggplot(sri_lanka_adm3) +
 
 ## License
 
-This package is released under the CC BY-4.0 license. See the
-`LICENSE.md` file for full details. Note that the boundary data being
-accessed (via geoBoundaries) also uses open licences; please check the
-specific dataset metadata for licensing details.
+This package is released under the [CC
+BY-4.0](https://creativecommons.org/licenses/by/4.0/) license. Note that
+the boundary data being accessed (via geoBoundaries) also uses open
+licences; please check the specific dataset metadata for licensing
+details.
 
 ## Acknowledgements
 
-- Many thanks to the geoBoundaries￼ team and the William & Mary geoLab
-  for creating and maintaining the dataset. ￼
+- Many thanks to the geoBoundaries team and the William & Mary geoLab
+  for creating and maintaining the dataset.
 - Thanks to the **R** package community and all contributors to this
   package’s development.
 - If you use **geobounds** (and underlying geoBoundaries data) in your
@@ -112,6 +115,7 @@ specific dataset metadata for licensing details.
 ## Citation
 
 <p>
+
 Hernangómez D (2025). <em>geobounds: Download Map Data from
 geoBoundaries</em>.
 <a href="https://dieghernan.github.io/geobounds/">https://dieghernan.github.io/geobounds/</a>.

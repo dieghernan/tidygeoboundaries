@@ -3,9 +3,9 @@
 # To replace with package functions when available
 library(geobounds)
 
-sri <- get_geobn(
+sri <- get_gb(
   country = "Sri Lanka",
-  boundary_type = "ADM3",
+  level = "ADM3",
   simplified = TRUE
 )
 

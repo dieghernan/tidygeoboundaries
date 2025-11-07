@@ -22,12 +22,12 @@
 #' @return
 #' A [`sf`][sf::st_sf] object.
 #'
-#' @inheritParams get_geobn
+#' @inheritParams get_gb
 #'
-#' @param boundary_type Type of boundary Accepted values are the ADM level
+#' @param adm_lvl Type of boundary Accepted values are the ADM level
 #'  (`"ADM0"` is the country boundary, `"ADM1"` is the first level of sub
 #'  national boundaries, `"ADM2"` is the second level).
-#' @param update_cache A logical whether to update cache. Default is `FALSE`.
+#' @param overwrite A logical whether to update cache. Default is `FALSE`.
 #'  When set to `TRUE` it would force a fresh download of the source
 #'  `.gpkg` file.
 #'
@@ -47,7 +47,7 @@
 #'
 #' # This download may take some time
 #' \dontrun{
-#' world <- get_geobn_world()
+#' world <- get_gb_world()
 #'
 #' library(ggplot2)
 #'
@@ -57,31 +57,46 @@
 #'   labs(caption = "Source: www.geoboundaries.org")
 #' }
 #'
-get_geobn_world <- function(
-  boundary_type = c("ADM0", "ADM1", "ADM2"),
-  verbose = FALSE,
-  update_cache = FALSE,
+get_gb_world <- function(
+  country = "ALL",
+  adm_lvl = c("ADM0", "ADM1", "ADM2"),
+  quiet = TRUE,
+  overwrite = FALSE,
   cache_dir = NULL
 ) {
   # Get info of distro in GitHub (commit) and change url
-  boundary_type <- match.arg(boundary_type)
+  level <- match.arg(adm_lvl)
 
-  metadat <- get_geobn_adm0("Vatican City", metadata = TRUE)
+  # Lightweight, we only need here the url
+  metadat <- get_gb_adm0("Vatican City", metadata = TRUE)
 
   baseurl <- metadat$gjDownloadURL[1]
   baseurl <- gsub("/gbOpen.*", "", baseurl)
 
-  fname <- paste0("geoBoundariesCGAZ_", boundary_type, ".gpkg")
+  fname <- paste0("geoBoundariesCGAZ_", level, ".gpkg")
 
   urlend <- paste(baseurl, "CGAZ", fname, sep = "/")
 
-  world <- hlp_get_geobn_sf_single(
+  # Here we need the country, we would use it to filter
+
+  # Country
+  if (any(toupper(country) == "ALL")) {
+    cgaz_country <- "ALL"
+  } else {
+    cgaz_country <- gb_helper_countrynames(country)
+  }
+
+
+  verbose <- isFALSE(quiet)
+
+  world <- hlp_get_gb_sf_single(
     urlend,
     subdir = "CGAZ",
     cache_dir = cache_dir,
-    update_cache = update_cache,
+    overwrite = overwrite,
     verbose = verbose,
-    format = "gpkg"
+    format = "gpkg",
+    cgaz_country = cgaz_country
   )
 
   tokeep <- setdiff(names(world), "id")
@@ -89,4 +104,24 @@ get_geobn_world <- function(
   world <- world[, tokeep]
 
   world
+}
+
+
+# Helper to read gpkg file
+read_gpkg_query <- function(file_local, cgaz_country) {
+  outsf <- sf::read_sf(file_local)
+
+  if (!("ALL" %in% cgaz_country)) {
+    outsf <- outsf[outsf$shapeGroup %in% cgaz_country, ]
+  }
+
+  # Adjust CRS just in case, in some OS seems to be problematic
+  # nocov start
+  if (is.na(sf::st_is_longlat(outsf))) {
+    outsf <- sf::st_set_crs(outsf, sf::st_crs(4326))
+  }
+
+  # nocov end
+
+  outsf
 }

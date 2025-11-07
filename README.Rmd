@@ -14,9 +14,11 @@ knitr::opts_chunk$set(
   warning = FALSE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  dpi = 300,
+  dpi = 150,
   out.width = "100%"
 )
+
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 ```
 
 # geobounds <img src="man/figures/logo.png" align="right" height="139"/>
@@ -47,7 +49,8 @@ package, you can:
     → region → district) from geoBoundaries
 -   Use tidyverse / **sf** workflows in **R** to map, analyse and join these
     boundaries with your own data
--   Work in an open-data context (geoBoundaries uses CC BY-4.0 / open licences)
+-   Work in an open-data context (geoBoundaries uses [CC
+    BY-4.0](https://creativecommons.org/licenses/by/4.0/)) / open licences)
 
 In short: if you work with geospatial boundaries in **R** (shape files,
 polygons, join with other data), this package simplifies the process.
@@ -76,12 +79,12 @@ install.packages("geobounds",
 
 ## Example usage
 
-```{r simple_plot, fig.alt="Map of all administration levels for Sri Lanka"}
+```{r simple_plot, fig.alt="Map of all administration levels for Sri Lanka", crop=TRUE}
 library(geobounds)
 
-sri_lanka_adm1 <- get_geobn_adm1("Sri Lanka")
-sri_lanka_adm2 <- get_geobn_adm2("Sri Lanka")
-sri_lanka_adm3 <- get_geobn_adm3("Sri Lanka")
+sri_lanka_adm1 <- get_gb_adm1("Sri Lanka")
+sri_lanka_adm2 <- get_gb_adm2("Sri Lanka")
+sri_lanka_adm3 <- get_gb_adm3("Sri Lanka")
 
 library(sf)
 library(dplyr)
@@ -96,8 +99,9 @@ ggplot(sri_lanka_adm3) +
   theme_void()
 ```
 
-> Note: This is a simple illustration. See the package vignettes for full
-> details on parameters, filters, caching, and advanced usage.
+> Note: This is a simple illustration. See the [package
+> vignettes](https://dieghernan.github.io/geobounds/articles/geobounds.html) for
+> full details on parameters, filters, caching, and advanced usage.
 
 ## Documentation & Resources
 
@@ -109,15 +113,15 @@ ggplot(sri_lanka_adm3) +
 
 ## License
 
-This package is released under the CC BY-4.0 license. See the `LICENSE.md` file
-for full details. Note that the boundary data being accessed (via geoBoundaries)
-also uses open licences; please check the specific dataset metadata for
-licensing details.
+This package is released under the [CC
+BY-4.0](https://creativecommons.org/licenses/by/4.0/) license. Note that the
+boundary data being accessed (via geoBoundaries) also uses open licences; please
+check the specific dataset metadata for licensing details.
 
 ## Acknowledgements
 
--   Many thanks to the geoBoundaries￼ team and the William & Mary geoLab for
-    creating and maintaining the dataset. ￼
+-   Many thanks to the geoBoundaries team and the William & Mary geoLab for
+    creating and maintaining the dataset.
 -   Thanks to the **R** package community and all contributors to this package’s
     development.
 -   If you use **geobounds** (and underlying geoBoundaries data) in your

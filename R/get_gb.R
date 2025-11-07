@@ -14,22 +14,22 @@
 #'   names or a vector of ISO3 country codes. Mixed types (as
 #'   `c("Italy","ES","FRA")`) would not work. See also
 #'   [countrycode::countrycode()].
-#' @param release_type One of `"gbOpen"`, `"gbHumanitarian"`,
-#'   "gbAuthoritative"`. Source of the spatial data. See **Details**.
-#' @param boundary_type Type of boundary Accepted values are `"ALL"` (all
+#' @param adm_lvl Type of boundary Accepted values are `"ALL"` (all
 #'   available boundaries) or the ADM level (`"ADM0"` is the country boundary,
 #'   `"ADM1"` is the first level of sub national boundaries, `"ADM2"` is the
 #'   second level and so on.
 #' @param simplified Logical. Return the simplified boundary or not.
+#' @param release_type One of `"gbOpen"`, `"gbHumanitarian"`,
+#'   "gbAuthoritative"`. Source of the spatial data. See **Details**.
 #' @param metadata Should the result be the metadata of the boundary?
-#' @param verbose Logical, displays information. Useful for debugging,
-#'   default is `FALSE`.
+#' @param quiet Logical, on `FALSE` it displays information of the call. Useful
+#'   for debugging, default is no messages `quiet = TRUE`.
 #'
-#' @param update_cache A logical whether to update cache. Default is `FALSE`.
+#' @param overwrite A logical whether to update cache. Default is `FALSE`.
 #'  When set to `TRUE` it would force a fresh download of the source
 #'  `.geojson` file.
 #'
-#' @param cache_dir A path to a cache directory. See [geobn_set_cache_dir()].
+#' @param cache_dir A path to a cache directory. See [gb_set_cache_dir()].
 #'
 #'
 #' @return
@@ -51,19 +51,20 @@
 #'
 #'  For most users, we suggest using `"gbOpen"`, as it is CC-BY 4.0 compliant,
 #'  and can be used for most purposes so long as attribution is provided.
-#'  `"gbHumanitarian"` files are mirrored from
-#'  [UN OCHA](https://www.unocha.org/), but may have less open licensure.
-#'  `"gbAuthoritative"` files are mirrored from
-#'  [UN SALB](https://salb.un.org/en), and cannot  be used for commercial
-#'  purposes, but are verified through in-country processes.
+#'
+#'  - `"gbHumanitarian"` files are mirrored from
+#'    [UN OCHA](https://www.unocha.org/), but may have less open licensure.
+#'  - `"gbAuthoritative"` files are mirrored from
+#'    [UN SALB](https://salb.un.org/en), and cannot  be used for commercial
+#'    purposes, but are verified through in-country processes.
 #'
 #' @examplesIf httr2::is_online()
 #'
 #' \donttest{
 # Map municipalities in Sri Lanka
-#' sri_lanka <- get_geobn(
+#' sri_lanka <- get_gb(
 #'   "Sri Lanka",
-#'   boundary_type = "ADM3",
+#'   adm_lvl = "ADM3",
 #'   simplified = TRUE
 #' )
 #'
@@ -77,43 +78,46 @@
 #'
 #' # Metadata
 #' library(dplyr)
-#' get_geobn(
+#' get_gb(
 #'   "Sri Lanka",
-#'   boundary_type = "ADM3",
+#'   adm_lvl = "ADM3",
 #'   metadata = TRUE
 #' ) %>%
 #'   glimpse()
 #'
-get_geobn <- function(
+get_gb <- function(
   country,
-  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
-  boundary_type = c("ADM0", "ADM1", "ADM2", "ADM3", "ADM4", "ALL"),
+  adm_lvl = c("ADM0", "ADM1", "ADM2", "ADM3", "ADM4", "ALL"),
   simplified = FALSE,
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
   metadata = FALSE,
-  verbose = FALSE,
-  update_cache = FALSE,
+  quiet = TRUE,
+  overwrite = FALSE,
   cache_dir = NULL
 ) {
   # Input params
-  release_type <- match.arg(release_type)
-  boundary_type <- match.arg(boundary_type)
+  source <- match.arg(release_type)
+  level <- match.arg(adm_lvl)
+
+  verbose <- isFALSE(quiet)
+
   if (any(toupper(country) == "ALL")) {
     country <- "ALL"
   } else {
-    country <- geobn_helper_countrynames(country)
+    country <- gb_helper_countrynames(country)
   }
 
   # Prepare query urls
   urls <- paste(
     "https://www.geoboundaries.org/api/current",
-    release_type,
+    source,
     country,
-    boundary_type,
+    level,
     sep = "/"
   )
 
   res <- lapply(urls, function(x) {
-    hlp_get_geobn_meta(url = x)
+    hlp_get_gb_meta(url = x)
   })
 
   meta_df <- dplyr::bind_rows(res)
@@ -138,11 +142,11 @@ get_geobn <- function(
   url_bound
   # Call and bind
   res_sf <- lapply(url_bound, function(x) {
-    hlp_get_geobn_sf_single(
+    hlp_get_gb_sf_single(
       url = x,
-      subdir = release_type,
+      subdir = source,
       verbose = verbose,
-      update_cache = update_cache,
+      overwrite = overwrite,
       cache_dir = cache_dir
     )
   })
@@ -153,7 +157,7 @@ get_geobn <- function(
 }
 
 
-hlp_get_geobn_meta <- function(url) {
+hlp_get_gb_meta <- function(url) {
   # Prepare query
   q <- httr2::request(url)
   q <- httr2::req_error(q, is_error = function(x) {
@@ -225,18 +229,19 @@ hlp_get_geobn_meta <- function(url) {
 }
 
 
-hlp_get_geobn_sf_single <- function(
+hlp_get_gb_sf_single <- function(
   url,
   subdir,
   verbose,
-  update_cache,
+  overwrite,
   cache_dir,
-  format = "geojson"
+  format = "geojson",
+  cgaz_country = "ALL"
 ) {
   filename <- basename(url)
   # Prepare cache
-  cache_dir <- geobn_hlp_cachedir(cache_dir)
-  cache_dir <- geobn_hlp_cachedir(file.path(cache_dir, subdir))
+  cache_dir <- gb_hlp_cachedir(cache_dir)
+  cache_dir <- gb_hlp_cachedir(file.path(cache_dir, subdir))
 
   # Create destfile and clean
   file_local <- file.path(cache_dir, filename)
@@ -247,7 +252,7 @@ hlp_get_geobn_sf_single <- function(
   num <- sf::st_crs(4326)
 
   # Check if cached
-  if (isFALSE(update_cache) && fileoncache) {
+  if (isFALSE(overwrite) && fileoncache) {
     if (verbose) {
       cli::cli_alert_success("File {.file {file_local}} already cached")
     }
@@ -269,8 +274,10 @@ hlp_get_geobn_sf_single <- function(
   if (format == "geojson") {
     outsf <- geojsonsf::geojson_sf(file_local, input = num$input, wkt = num$wkt)
   } else {
-    outsf <- sf::read_sf(file_local)
+    # Geopackage
+
+    outsf <- read_gpkg_query(file_local, cgaz_country)
   }
 
-  outsf <- geobn_helper_utf8(outsf)
+  outsf <- gb_helper_utf8(outsf)
 }
