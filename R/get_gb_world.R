@@ -86,7 +86,6 @@ get_gb_world <- function(
     cgaz_country <- gb_helper_countrynames(country)
   }
 
-
   verbose <- isFALSE(quiet)
 
   world <- hlp_get_gb_sf_single(
