@@ -8,7 +8,8 @@ message: 'To cite package "geobounds" in publications use:'
 type: software
 license: CC-BY-4.0
 title: 'geobounds: Download Map Data from ''geoBoundaries'''
-version: 0.0.1
+version: 0.0.1.9000
+doi: 10.5281/zenodo.17554275
 abstract: 'Tools to download data from ''geoBoundaries'' <https://www.geoboundaries.org/>.
   Several administration levels available. See Runfola, D. et al. (2020) geoBoundaries:
   A global database of political administrative boundaries. PLOS ONE 15(4): e0231866.
@@ -27,12 +28,13 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2025'
-  version: 0.0.1
+  version: 0.0.1.9000
   url: https://dieghernan.github.io/geobounds/
   abstract: 'Tools to download data from geoBoundaries <https://www.geoboundaries.org/>.
     Several administration levels available. See Runfola, D. et al. (2020) geoBoundaries:
     A global database of political administrative boundaries. PLOS ONE 15(4): e0231866.
     <doi:10.1371/journal.pone.0231866>.'
+  doi: 10.5281/zenodo.17554275
 repository-code: https://github.com/dieghernan/geobounds
 url: https://dieghernan.github.io/geobounds/
 contact:

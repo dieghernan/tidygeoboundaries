@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/dieghernan/geobounds",
   "issueTracker": "https://github.com/dieghernan/geobounds/issues",
   "license": "https://spdx.org/licenses/CC-BY-4.0",
-  "version": "0.0.1",
+  "version": "0.0.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -197,7 +197,7 @@
     "SystemRequirements": null
   },
   "keywords": ["administrative-boundaries", "api", "geoboundaries", "r", "r-package", "spatial-data"],
-  "fileSize": "288.855KB",
+  "fileSize": "289.096KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -210,7 +210,10 @@
         }
       ],
       "name": "{geobounds}: Download Map Data from geoBoundaries",
-      "url": "https://dieghernan.github.io/geobounds/"
+      "identifier": "10.5281/zenodo.17554275",
+      "url": "https://dieghernan.github.io/geobounds/",
+      "@id": "https://doi.org/10.5281/zenodo.17554275",
+      "sameAs": "https://doi.org/10.5281/zenodo.17554275"
     },
     {
       "@type": "ScholarlyArticle",

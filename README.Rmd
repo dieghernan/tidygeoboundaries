@@ -31,6 +31,7 @@ knitr::opts_chunk$set(
 [![Project Status: Active – The project has reached a stable, usable state and
 is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.17554275-blue)](https://doi.org/10.5281/zenodo.17554275)
 
 <!-- badges: end -->
 

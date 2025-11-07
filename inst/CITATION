@@ -4,6 +4,7 @@ abs <- gsub("'", "", abs)
 title <- trimws(gsub("'", "", meta$Title, fixed = TRUE))
 pkg <- trimws(meta$Package)
 title <- gsub("GeoBoundaries", "geoBoundaries", title)
+doi <- "10.5281/zenodo.17554275"
 
 bibentry(
   "Manual",
@@ -14,6 +15,7 @@ bibentry(
   version = meta$Version,
   url = unlist(strsplit(meta$URL, ","))[1],
   abstract = abs,
+  doi = doi,
   key = paste0("R-", pkg)
 )
 

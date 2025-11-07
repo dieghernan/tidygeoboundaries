@@ -13,6 +13,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.17554275-blue)](https://doi.org/10.5281/zenodo.17554275)
 
 <!-- badges: end -->
 
@@ -119,6 +120,7 @@ details.
 
 Hernangómez D (2025). <em>geobounds: Download Map Data from
 geoBoundaries</em>.
+<a href="https://doi.org/10.5281/zenodo.17554275">doi:10.5281/zenodo.17554275</a>,
 <a href="https://dieghernan.github.io/geobounds/">https://dieghernan.github.io/geobounds/</a>.
 </p>
 
@@ -128,9 +130,10 @@ A BibTeX entry for LaTeX users:
       title = {{geobounds}: Download Map Data from geoBoundaries},
       author = {Diego Hernangómez},
       year = {2025},
-      version = {0.0.1},
+      version = {0.0.1.9000},
       url = {https://dieghernan.github.io/geobounds/},
       abstract = {Tools to download data from geoBoundaries <https://www.geoboundaries.org/>. Several administration levels available. See Runfola, D. et al. (2020) geoBoundaries: A global database of political administrative boundaries. PLOS ONE 15(4): e0231866. <doi:10.1371/journal.pone.0231866>.},
+      doi = {10.5281/zenodo.17554275},
     }
 
 ## References
