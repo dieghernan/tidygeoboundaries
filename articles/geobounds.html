@@ -128,11 +128,9 @@ we recommend using the simplified datasets available by setting
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Source: www.geoboundaries.org"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<p><img src="norway-1.png" alt="Comparison between full vs. simplified map." width="100%"></p>
-<p class="caption">
+<img src="norway-1.png" alt="Comparison between full vs. simplified map." width="100%"><p class="caption">
+Comparison between full vs. simplified map.
 </p>
-<p>Comparison between full vs. simplified map.</p>
-
 </div>
 <div class="section level3">
 <h3 id="individual-country-files">Individual country files<a class="anchor" aria-label="anchor" href="#individual-country-files"></a>
@@ -160,11 +158,9 @@ identification of disputed areas.</p>
 <span>    caption <span class="op">=</span> <span class="st">"Source: www.geoboundaries.org"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<p><img src="intersect-1.png" alt="Map showing overlapping in disputed area: Kashmir." width="100%"></p>
-<p class="caption">
+<img src="intersect-1.png" alt="Map showing overlapping in disputed area: Kashmir." width="100%"><p class="caption">
+Map showing overlapping in disputed area: Kashmir.
 </p>
-<p>Map showing overlapping in disputed area: Kashmir.</p>
-
 </div>
 </div>
 <div class="section level3">
@@ -195,11 +191,9 @@ US Department of State definitions.</p></li>
 <span>    caption <span class="op">=</span> <span class="st">"Source: www.geoboundaries.org"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<p><img src="cgaz-1.png" alt="Map showing no overlapping in Kashmir, provided by CGAZ." width="100%"></p>
-<p class="caption">
+<img src="cgaz-1.png" alt="Map showing no overlapping in Kashmir, provided by CGAZ." width="100%"><p class="caption">
+Map showing no overlapping in Kashmir, provided by CGAZ.
 </p>
-<p>Map showing no overlapping in Kashmir, provided by CGAZ.</p>
-
 </div>
 </div>
 </div>
@@ -214,22 +208,22 @@ version. For example:</p>
 <span><span class="va">current</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gb_detect_cache_dir.html">gb_detect_cache_dir</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">current</span></span>
-<span><span class="co">#&gt; [1] "/tmp/Rtmpeqm4AD"</span></span>
+<span><span class="co">#&gt; [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpmABegQ"</span></span>
 <span></span>
 <span><span class="co"># Change to new</span></span>
 <span><span class="va">newdir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/geoboundvignette"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/gb_set_cache_dir.html">gb_set_cache_dir</a></span><span class="op">(</span><span class="va">newdir</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✔ geobounds cache dir is '/tmp/Rtmpeqm4AD//geoboundvignette'.</span></span>
+<span><span class="co">#&gt; ✔ geobounds cache dir is 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmABegQ//geoboundvignette'.</span></span>
 <span><span class="co">#&gt; ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.</span></span>
 <span></span>
 <span><span class="co"># Download</span></span>
 <span><span class="va">example</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_gb_adm.html">get_gb_adm0</a></span><span class="op">(</span><span class="st">"Vatican City"</span>, quiet <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ Downloading file from &lt;https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/VAT/ADM0/geoBoundaries-VAT-ADM0.geojson&gt;</span></span>
-<span><span class="co">#&gt; → Cache dir is '/tmp/Rtmpeqm4AD//geoboundvignette/gbOpen'</span></span>
+<span><span class="co">#&gt; → Cache dir is 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmABegQ//geoboundvignette/gbOpen'</span></span>
 <span></span>
 <span><span class="co"># Restore cache dir</span></span>
 <span><span class="fu"><a href="../reference/gb_set_cache_dir.html">gb_set_cache_dir</a></span><span class="op">(</span><span class="va">current</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✔ geobounds cache dir is '/tmp/Rtmpeqm4AD'.</span></span>
+<span><span class="co">#&gt; ✔ geobounds cache dir is 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmABegQ'.</span></span>
 <span><span class="co">#&gt; ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.</span></span>
 <span></span>
 <span><span class="va">current</span> <span class="op">==</span> <span class="fu"><a href="../reference/gb_detect_cache_dir.html">gb_detect_cache_dir</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -259,10 +253,10 @@ of the individual files and the boundaries data of CGAZ:</p>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 47</span></span>
 <span><span class="co">#&gt; Columns: 4</span></span>
-<span><span class="co">#&gt; $ boundaryISO          &lt;chr&gt; "ABW", "AIA", "ARG", "ATG", "BES", "BHS", "BLM", "BLZ", "BOL", "BRA", "BRB", "CHL", "COL", "CRI",…</span></span>
-<span><span class="co">#&gt; $ boundaryName         &lt;chr&gt; "Aruba", "Anguilla", "Argentina", "Antigua and Barbuda", "Bonaire Sint Eustatius and Saba", "Baha…</span></span>
-<span><span class="co">#&gt; $ Continent            &lt;chr&gt; "Latin America and the Caribbean", "Latin America and the Caribbean", "Latin America and the Cari…</span></span>
-<span><span class="co">#&gt; $ worldBankIncomeGroup &lt;chr&gt; "High-income Countries", "No income group available", "High-income Countries", "High-income Count…</span></span>
+<span><span class="co">#&gt; $ boundaryISO          &lt;chr&gt; "ABW", "AIA", "ARG", "ATG", "BES", "BHS", "BLM", …</span></span>
+<span><span class="co">#&gt; $ boundaryName         &lt;chr&gt; "Aruba", "Anguilla", "Argentina", "Antigua and Ba…</span></span>
+<span><span class="co">#&gt; $ Continent            &lt;chr&gt; "Latin America and the Caribbean", "Latin America…</span></span>
+<span><span class="co">#&gt; $ worldBankIncomeGroup &lt;chr&gt; "High-income Countries", "No income group availab…</span></span>
 <span></span>
 <span><span class="co"># Adjust factors</span></span>
 <span><span class="va">latam_meta</span><span class="op">$</span><span class="va">income_factor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">latam_meta</span><span class="op">$</span><span class="va">worldBankIncomeGroup</span>,</span>
@@ -292,11 +286,9 @@ of the individual files and the boundaries data of CGAZ:</p>
 <span>    caption <span class="op">=</span> <span class="st">"Source: www.geoboundaries.org"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<p><img src="choro-1.png" alt="World Bank Income Group: Latin America and the Caribbean " width="100%"></p>
-<p class="caption">
+<img src="choro-1.png" alt="World Bank Income Group: Latin America and the Caribbean " width="100%"><p class="caption">
+World Bank Income Group: Latin America and the Caribbean
 </p>
-<p>World Bank Income Group: Latin America and the Caribbean</p>
-
 </div>
 </div>
 <div class="section level2">
