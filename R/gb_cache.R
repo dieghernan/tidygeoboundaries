@@ -8,7 +8,7 @@
 #'
 #' @description
 #' This function will store your `cache_dir` path on your local machine and
-#' would load it for future sessions. Type `gb_detect_cache_dir()` to find 
+#' would load it for future sessions. Type `gb_detect_cache_dir()` to find
 #' your cached path.
 #'
 #' Alternatively, you can store the `cache_dir` manually with the following

@@ -11,7 +11,7 @@ gb_set_cache_dir(cache_dir, overwrite = FALSE, install = FALSE, quiet = FALSE)
 would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
 
 \item{overwrite}{Logical. If this is set to \code{TRUE}, it will overwrite an
-existing \code{GEOBOUNDS_CACHE_DIR} that you already have in local machine.}
+existing \code{cache_dir}.}
 
 \item{install}{Logical. If \code{TRUE}, will install the key in your local
 machine for use in future sessions.  Defaults to \code{FALSE.} If \code{cache_dir}
@@ -25,8 +25,8 @@ An (invisible) character with the path to your \code{cache_dir}.
 }
 \description{
 This function will store your \code{cache_dir} path on your local machine and
-would load it for future sessions. Type
-\code{Sys.getenv("GEOBOUNDS_CACHE_DIR")} to find your cached path.
+would load it for future sessions. Type \code{gb_detect_cache_dir()} to find
+your cached path.
 
 Alternatively, you can store the \code{cache_dir} manually with the following
 options:
@@ -45,7 +45,7 @@ run this command on each session (Similar to \code{install = FALSE}).
 gb_set_cache_dir(quiet = FALSE)
 }
 
-Sys.getenv("GEOBOUNDS_CACHE_DIR")
+gb_detect_cache_dir()
 }
 \seealso{
 \code{\link[tools:userdir]{tools::R_user_dir()}}

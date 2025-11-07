@@ -26,8 +26,7 @@ data and configuration, specifically:
 \item Deletes the \pkg{geobounds} config directory
 (\code{tools::R_user_dir("geobounds", "config")}).
 \item Deletes the \code{cache_dir} directory.
-\item Deletes the values on stored on \code{Sys.getenv("GEOBOUNDS_CACHE_DIR")} and
-\code{options(mapSpain_cache_dir)}.
+\item Deletes the values on stored on \code{Sys.getenv("GEOBOUNDS_CACHE_DIR")}.
 }
 }
 \details{
@@ -41,7 +40,6 @@ as it you would never have installed and/or used \pkg{geobounds}.
 gb_clear_cache(quiet = FALSE)
 }
 
-Sys.getenv("GEOBOUNDS_CACHE_DIR")
 }
 \seealso{
 Other cache utilities: 
