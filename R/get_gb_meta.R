@@ -21,7 +21,7 @@
 #' @seealso [get_gb()]
 #' @details
 #'
-#' Equivalent to `get_gb(..., metadata = TRUE)`.
+#' Equivalent to `get_gb(..., metadata = TRUE)`. See **Details** in [get_gb()].
 #'
 #' @examplesIf httr2::is_online()
 #' # Get ADM4 levels

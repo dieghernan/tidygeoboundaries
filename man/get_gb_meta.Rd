@@ -26,7 +26,7 @@ available boundaries) or the ADM level (\code{"ADM0"} is the country boundary,
 second level and so on.}
 
 \item{release_type}{One of \code{"gbOpen"}, \code{"gbHumanitarian"},
-"gbAuthoritative"`. Source of the spatial data. See \strong{Details}.}
+\code{"gbAuthoritative"}. Source of the spatial data. See \strong{Details}.}
 }
 \value{
 A tibble.
@@ -36,7 +36,7 @@ This function returns metadadata of the
 \href{https://www.geoboundaries.org/api.html}{geoBoundaries API}.
 }
 \details{
-Equivalent to \code{get_gb(..., metadata = TRUE)}.
+Equivalent to \code{get_gb(..., metadata = TRUE)}. See \strong{Details} in \code{\link[=get_gb]{get_gb()}}.
 }
 \examples{
 \dontshow{if (httr2::is_online()) withAutoprint(\{ # examplesIf}

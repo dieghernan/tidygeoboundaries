@@ -17,8 +17,6 @@ knitr::opts_chunk$set(
   dpi = 150,
   out.width = "100%"
 )
-
-knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 ```
 
 # geobounds <img src="man/figures/logo.png" align="right" height="139"/>
@@ -30,8 +28,9 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 [![codecov](https://codecov.io/gh/dieghernan/geobounds/graph/badge.svg)](https://app.codecov.io/gh/dieghernan/geobounds)
 [![r-universe](https://dieghernan.r-universe.dev/badges/geobounds)](https://dieghernan.r-universe.dev/geobounds)
 [![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/geobounds/badge)](https://www.codefactor.io/repository/github/dieghernan/geobounds)
-[![Project Status:
-Concept](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
+[![Project Status: Active – The project has reached a stable, usable state and
+is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <!-- badges: end -->
 
@@ -79,7 +78,7 @@ install.packages("geobounds",
 
 ## Example usage
 
-```{r simple_plot, fig.alt="Map of all administration levels for Sri Lanka", crop=TRUE}
+```{r simple_plot, fig.alt="Map of all administration levels for Sri Lanka"}
 library(geobounds)
 
 sri_lanka_adm1 <- get_gb_adm1("Sri Lanka")

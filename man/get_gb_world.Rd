@@ -33,7 +33,10 @@ for debugging, default is no messages \code{quiet = TRUE}.}
 When set to \code{TRUE} it would force a fresh download of the source
 \code{.gpkg} file.}
 
-\item{cache_dir}{A path to a cache directory. See \code{\link[=gb_set_cache_dir]{gb_set_cache_dir()}}.}
+\item{cache_dir}{A path to a cache directory. If not set (the default
+\code{NULL}), the data would be stored in the default cache directory (see
+\code{\link[=gb_set_cache_dir]{gb_set_cache_dir()}}). If no cache directory has been set, files would be
+stored in the temporary directory (see \code{base::tempdir()}).}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object.
@@ -75,7 +78,7 @@ ggplot(world) +
 }
 \references{
 Runfola, D. et al. (2020) geoBoundaries: A global database of political
-administrative boundaries. \emph{PLoS ONE} \strong{15}(4): e0231866.
+administrative boundaries. \emph{PLOS ONE} 15(4): e0231866.
 \doi{10.1371/journal.pone.0231866}.
 }
 \seealso{

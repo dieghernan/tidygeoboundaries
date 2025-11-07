@@ -33,7 +33,7 @@ second level and so on.}
 \item{simplified}{Logical. Return the simplified boundary or not.}
 
 \item{release_type}{One of \code{"gbOpen"}, \code{"gbHumanitarian"},
-"gbAuthoritative"`. Source of the spatial data. See \strong{Details}.}
+\code{"gbAuthoritative"}. Source of the spatial data. See \strong{Details}.}
 
 \item{metadata}{Should the result be the metadata of the boundary?}
 
@@ -44,7 +44,10 @@ for debugging, default is no messages \code{quiet = TRUE}.}
 When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
-\item{cache_dir}{A path to a cache directory. See \code{\link[=gb_set_cache_dir]{gb_set_cache_dir()}}.}
+\item{cache_dir}{A path to a cache directory. If not set (the default
+\code{NULL}), the data would be stored in the default cache directory (see
+\code{\link[=gb_set_cache_dir]{gb_set_cache_dir()}}). If no cache directory has been set, files would be
+stored in the temporary directory (see \code{base::tempdir()}).}
 }
 \value{
 \itemize{
@@ -58,6 +61,9 @@ for all uses of this dataset.
 
 This function returns data of individual countries "as they would represent
 themselves", with no special identification of disputed areas.
+
+If you would prefer data that explicitly includes disputed areas, please use
+\code{\link[=get_gb_world]{get_gb_world()}}.
 }
 \details{
 For most users, we suggest using \code{"gbOpen"}, as it is CC-BY 4.0 compliant,
@@ -100,7 +106,7 @@ get_gb(
 }
 \references{
 Runfola, D. et al. (2020) geoBoundaries: A global database of political
-administrative boundaries. \emph{PLoS ONE} \strong{15}(4): e0231866.
+administrative boundaries. \emph{PLOS ONE} 15(4): e0231866.
 \doi{10.1371/journal.pone.0231866}.
 }
 \seealso{
