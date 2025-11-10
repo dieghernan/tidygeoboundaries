@@ -18,10 +18,10 @@ gb_helper_countrynames <- function(names, out = "iso3c") {
   tolow <- gsub("kosovo", "xkx", tolow)
   if ("xkx" %in% tolow) {
     pos <- match("xkx", tolow)
-    names <- names[-pos]
-    if (length(names) == 0) {
+    if (length(names) == 1) {
       return("XKX")
     }
+    names[pos] <- names[1]
   } else {
     pos <- 9999999
   }
@@ -36,6 +36,10 @@ gb_helper_countrynames <- function(names, out = "iso3c") {
       "Invalid country names. Try a vector of names or  ISO3 codes"
     )
   }
+  # Has Kosovo?
+  if (pos < 9999999) {
+    outnames[pos] <- "XKX"
+  }
   linit <- length(outnames)
   outnames2 <- outnames[!is.na(outnames)]
   lend <- length(outnames2)
@@ -44,10 +48,7 @@ gb_helper_countrynames <- function(names, out = "iso3c") {
     cli::cli_alert_warning("Countries ommited: {ff}")
     cli::cli_alert_info("Review the names or switch to ISO3 codes.")
   }
-  # Has Kosovo?
-  if (pos < 9999999) {
-    outnames2 <- unique(c(outnames2[seq_len(pos - 1)], "XKX", outnames2))
-  }
+
   outnames2
 }
 

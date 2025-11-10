@@ -54,7 +54,7 @@
       ! Countries ommited: Rea and Murcua
       i Review the names or switch to ISO3 codes.
     Output
-      [1] "ESP" "ATA" "XKX"
+      [1] "ESP" "XKX" "ATA"
 
 ---
 
