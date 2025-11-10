@@ -11,6 +11,21 @@
 #' @noRd
 gb_helper_countrynames <- function(names, out = "iso3c") {
   names <- as.character(names[!is.na(names)])
+  names[tolower(names) == "antartica"] <- "Antarctica"
+
+  # Special for Kosovo
+  tolow <- tolower(names)
+  tolow <- gsub("kosovo", "xkx", tolow)
+  if ("xkx" %in% tolow) {
+    pos <- match("xkx", tolow)
+    names <- names[-pos]
+    if (length(names) == 0) {
+      return("XKX")
+    }
+  } else {
+    pos <- 9999999
+  }
+
   maxname <- max(nchar(names))
   if (maxname > 3) {
     outnames <- countrycode::countryname(names, out)
@@ -28,6 +43,10 @@ gb_helper_countrynames <- function(names, out = "iso3c") {
     ff <- names[is.na(outnames)] # nolint
     cli::cli_alert_warning("Countries ommited: {ff}")
     cli::cli_alert_info("Review the names or switch to ISO3 codes.")
+  }
+  # Has Kosovo?
+  if (pos < 9999999) {
+    outnames2 <- unique(c(outnames2[seq_len(pos - 1)], "XKX", outnames2))
   }
   outnames2
 }

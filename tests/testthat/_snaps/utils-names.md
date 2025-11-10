@@ -15,3 +15,31 @@
     Output
       [1] "ESP" "USA"
 
+# Problematic names
+
+    Code
+      gb_helper_countrynames(c("Espagne", "Antartica"))
+    Output
+      [1] "ESP" "ATA"
+
+---
+
+    Code
+      gb_helper_countrynames(c("spain", "antartica"))
+    Output
+      [1] "ESP" "ATA"
+
+---
+
+    Code
+      gb_helper_countrynames(c("Spain", "Kosovo", "Antartica"))
+    Output
+      [1] "ESP" "XKX" "ATA"
+
+---
+
+    Code
+      gb_helper_countrynames(c("ESP", "XKX", "DEU"))
+    Output
+      [1] "ESP" "XKX" "DEU"
+
