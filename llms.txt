@@ -21,10 +21,6 @@ polygons). Using this package, you can:
 In short: if you work with geospatial boundaries in **R** (shape files,
 polygons, join with other data), this package simplifies the process.
 
-> This package uses the [geoBoundaries
-> API](https://www.geoboundaries.org/api.html). The latest version is
-> **v6.0.0**.
-
 ## Installation
 
 You can install the developing version of **geobounds** with:
