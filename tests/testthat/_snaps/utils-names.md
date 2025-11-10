@@ -10,10 +10,17 @@
     Code
       gb_helper_countrynames(c("ESP", "POR", "RTA", "USA"))
     Message
-      ! Countries ommited: POR and RTA
+      ! Some values were not matched unambiguously: POR and RTA
       i Review the names or switch to ISO3 codes.
     Output
       [1] "ESP" "USA"
+
+---
+
+    Code
+      gb_helper_countrynames(c("ESP", "Alemania"))
+    Output
+      [1] "ESP" "DEU"
 
 # Problematic names
 
@@ -47,11 +54,8 @@
 
     Code
       gb_helper_countrynames(c("Spain", "Rea", "Kosovo", "Antartica", "Murcua"))
-    Condition
-      Warning:
-      Some values were not matched unambiguously: Murcua, Rea
     Message
-      ! Countries ommited: Rea and Murcua
+      ! Some values were not matched unambiguously: Rea and Murcua
       i Review the names or switch to ISO3 codes.
     Output
       [1] "ESP" "XKX" "ATA"

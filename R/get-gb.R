@@ -14,9 +14,7 @@
 #'
 #' @param country A character vector of country codes. It could be either
 #'   `"ALL"` (that would return the data for all countries), a vector of country
-#'   names or a vector of ISO3 country codes. Mixed types (as
-#'   `c("Italy","ES","FRA")`) would not work. See also
-#'   [countrycode::countrycode()].
+#'   names or ISO3 country codes. See also [countrycode::countrycode()].
 #' @param adm_lvl Type of boundary Accepted values are `"ALL"` (all
 #'   available boundaries) or the ADM level (`"ADM0"` is the country boundary,
 #'   `"ADM1"` is the first level of sub national boundaries, `"ADM2"` is the

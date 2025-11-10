@@ -18,9 +18,7 @@ get_gb_cgaz(
 \arguments{
 \item{country}{A character vector of country codes. It could be either
 \code{"ALL"} (that would return the data for all countries), a vector of country
-names or a vector of ISO3 country codes. Mixed types (as
-\code{c("Italy","ES","FRA")}) would not work. See also
-\code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+names or ISO3 country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{adm_lvl}{Type of boundary Accepted values are the ADM level
 (\code{"ADM0"} is the country boundary, \code{"ADM1"} is the first level of sub

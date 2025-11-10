@@ -10,42 +10,37 @@
 #'
 #' @noRd
 gb_helper_countrynames <- function(names, out = "iso3c") {
-  names <- as.character(names[!is.na(names)])
   names[tolower(names) == "antartica"] <- "Antarctica"
+  out <- "iso3c"
 
-  # Special for Kosovo
-  tolow <- tolower(names)
-  tolow <- gsub("kosovo", "xkx", tolow)
-  if ("xkx" %in% tolow) {
-    pos <- match("xkx", tolow)
-    if (length(names) == 1) {
+  # Vectorize
+  outnames <- lapply(names, function(x) {
+    if (grepl("Kosovo", x, ignore.case = TRUE)) {
       return("XKX")
     }
-    names[pos] <- names[1]
-  } else {
-    pos <- 9999999
-  }
+    if (grepl("XKX", x, ignore.case = TRUE)) {
+      return("XKX")
+    }
+    maxname <- max(nchar(x))
+    if (maxname > 3) {
+      outnames <- countrycode::countryname(x, out, warn = FALSE)
+    } else if (maxname == 3) {
+      outnames <- countrycode::countrycode(x, "iso3c", out, warn = FALSE)
+    } else {
+      cli::cli_abort(
+        "Invalid country names. Try a vector of names or  ISO3 codes"
+      )
+    }
+    outnames
+  })
 
-  maxname <- max(nchar(names))
-  if (maxname > 3) {
-    outnames <- countrycode::countryname(names, out)
-  } else if (maxname == 3) {
-    outnames <- countrycode::countrycode(names, "iso3c", out, warn = FALSE)
-  } else {
-    cli::cli_abort(
-      "Invalid country names. Try a vector of names or  ISO3 codes"
-    )
-  }
-  # Has Kosovo?
-  if (pos < 9999999) {
-    outnames[pos] <- "XKX"
-  }
+  outnames <- unlist(outnames)
   linit <- length(outnames)
   outnames2 <- outnames[!is.na(outnames)]
   lend <- length(outnames2)
   if (linit != lend) {
     ff <- names[is.na(outnames)] # nolint
-    cli::cli_alert_warning("Countries ommited: {ff}")
+    cli::cli_alert_warning("Some values were not matched unambiguously: {ff}")
     cli::cli_alert_info("Review the names or switch to ISO3 codes.")
   }
 
@@ -81,6 +76,14 @@ gb_helper_utf8 <- function(data_sf) {
   # To UTF-8
   names <- names(data_sf)
   g <- sf::st_geometry(data_sf)
+  # Everything as MULTIPOLYGON
+
+  geomtype <- sf::st_geometry_type(g)
+  # nocov start
+  if (any(geomtype == "POLYGON")) {
+    g <- sf::st_cast(g, "MULTIPOLYGON")
+  }
+  # nocov end
 
   which_geom <- which(vapply(
     data_sf,

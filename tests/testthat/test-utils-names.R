@@ -6,6 +6,7 @@ test_that("Utils names", {
   expect_snapshot(gb_helper_countrynames(
     c("ESP", "POR", "RTA", "USA")
   ))
+  expect_snapshot(gb_helper_countrynames(c("ESP", "Alemania")))
 })
 
 test_that("Problematic names", {
@@ -52,4 +53,10 @@ test_that("Test full name conversion", {
   expect_silent(isos2 <- gb_helper_countrynames(isos))
   expect_identical(length(nm), length(isos2))
   expect_identical(length(nm), length(nm2))
+})
+test_that("Test mixed countries", {
+  skip_on_cran()
+  skip_if_offline()
+  expect_silent(cnt <- get_gb(country = c("Germany", "USA"), simplified = TRUE))
+  expect_s3_class(cnt, "sf")
 })

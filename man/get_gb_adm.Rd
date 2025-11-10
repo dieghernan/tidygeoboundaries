@@ -65,9 +65,7 @@ get_gb_adm4(
 \arguments{
 \item{country}{A character vector of country codes. It could be either
 \code{"ALL"} (that would return the data for all countries), a vector of country
-names or a vector of ISO3 country codes. Mixed types (as
-\code{c("Italy","ES","FRA")}) would not work. See also
-\code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+names or ISO3 country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{simplified}{Logical. Return the simplified boundary or not.}
 
