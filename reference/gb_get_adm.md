@@ -20,8 +20,9 @@ for extracting any given administration level:
 
 - `gb_get_adm4()` returns fourth-level administration boundaries.
 
-- `gb_get_adm5()` returns fifth-level administration boundaries. Note
-  that not all countries have the same number of levels.
+- `gb_get_adm5()` returns fifth-level administration boundaries.
+
+Note that not all countries have the same number of levels.
 
 ## Usage
 
