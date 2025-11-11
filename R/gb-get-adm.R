@@ -17,7 +17,8 @@
 #'   boundaries (e.g. towns or cities in some countries).
 #' - `gb_get_adm4()` returns fourth-level administration
 #'   boundaries.
-#'
+#' - `gb_get_adm5()` returns fifth-level administration
+#'   boundaries.
 #' Note that not all countries have the same number of levels.
 #'
 #' @rdname gb_get_adm
@@ -171,6 +172,29 @@ gb_get_adm4 <- function(
     country = country,
     release_type = release_type,
     adm_lvl = "ADM4",
+    simplified = simplified,
+    metadata = metadata,
+    quiet = quiet,
+    overwrite = overwrite,
+    cache_dir = cache_dir
+  )
+}
+
+#' @rdname gb_get_adm
+#' @export
+gb_get_adm5 <- function(
+  country,
+  simplified = FALSE,
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
+  metadata = FALSE,
+  quiet = TRUE,
+  overwrite = FALSE,
+  cache_dir = NULL
+) {
+  gb_get(
+    country = country,
+    release_type = release_type,
+    adm_lvl = "ADM5",
     simplified = simplified,
     metadata = metadata,
     quiet = quiet,

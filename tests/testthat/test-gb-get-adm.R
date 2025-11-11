@@ -10,7 +10,7 @@ test_that("Test levels", {
   cnt <- db %>%
     group_by(boundaryISO) %>%
     count() %>%
-    filter(n == 5) %>%
+    filter(n == 6) %>%
     ungroup() %>%
     slice_head(n = 1) %>%
     pull(boundaryISO)
@@ -38,5 +38,10 @@ test_that("Test levels", {
   # Check 4
   a <- gb_get(cnt, simplified = TRUE, adm_lvl = "ADM4")
   b <- gb_get_adm4(cnt, simplified = TRUE)
+  expect_identical(a, b)
+
+  # Check 5
+  a <- gb_get(cnt, simplified = TRUE, adm_lvl = "ADM5")
+  b <- gb_get_adm5(cnt, simplified = TRUE)
   expect_identical(a, b)
 })

@@ -35,9 +35,19 @@ as it you would never have installed and/or used \pkg{geobounds}.
 }
 \examples{
 
-# Don't run this! It would modify your current state
+# Caution! This may modify your current state
+
 \dontrun{
+my_cache <- gb_detect_cache_dir()
+# Set an example cache
+ex <- file.path(tempdir(), "example", "cache")
+gb_set_cache_dir(ex, quiet = TRUE)
+
 gb_clear_cache(quiet = FALSE)
+
+# Restore initial cache
+gb_set_cache_dir(my_cache)
+identical(my_cache, gb_detect_cache_dir())
 }
 
 }

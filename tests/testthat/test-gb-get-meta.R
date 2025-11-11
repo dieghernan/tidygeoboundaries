@@ -6,6 +6,10 @@ test_that("Check meta", {
   expect_s3_class(adm1, "tbl")
   expect_identical(unique(adm1$boundaryType), "ADM1")
 
+  adm5 <- gb_get_meta(adm_lvl = "ADM5")
+  expect_s3_class(adm5, "tbl")
+  expect_identical(unique(adm5$boundaryType), "ADM5")
+
   # Another source
   aa <- gb_get_meta(release_type = "gbHumanitarian", adm_lvl = "ADM1")
   expect_s3_class(aa, "tbl")

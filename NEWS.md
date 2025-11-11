@@ -10,13 +10,15 @@ Functions for downloading data have been renamed to follow the convention
 -   `get_gb_cgaz()` -\> `gb_get_cgaz()`.
 -   `get_gb_meta()` -\> `gb_get_meta()`.
 
-### Others
+### Other changes
 
+-   `get_gb_adm5()` added.
 -   All functions:
     -   Improve detection for Antarctica and Kosovo.
     -   All functions return a `MULTIPOLYGON`.
     -   Function fails gracefully when the country file is not available (with
         neither errors nor warnings).
+    -   `httr2::req_retry()` implemented to avoid timeout / transient errors.
 -   `gb_get*()`: In all functions now the `country` argument recognize mixed
     types (e.g. `gb_get(country = c("Germany", "USA"))` would work).
 -   `gb_get_cgaz()` get the latest data available on the repo

@@ -7,6 +7,7 @@
 \alias{gb_get_adm2}
 \alias{gb_get_adm3}
 \alias{gb_get_adm4}
+\alias{gb_get_adm5}
 \title{Get country files from geoBoundaries for a given administration level}
 \source{
 geoboundaries API Service \url{https://www.geoboundaries.org/api.html}.
@@ -53,6 +54,16 @@ gb_get_adm3(
 )
 
 gb_get_adm4(
+  country,
+  simplified = FALSE,
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
+  metadata = FALSE,
+  quiet = TRUE,
+  overwrite = FALSE,
+  cache_dir = NULL
+)
+
+gb_get_adm5(
   country,
   simplified = FALSE,
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
@@ -108,9 +119,10 @@ boundaries (e.g. Counties in the United States).
 boundaries (e.g. towns or cities in some countries).
 \item \code{gb_get_adm4()} returns fourth-level administration
 boundaries.
-}
-
+\item \code{gb_get_adm5()} returns fifth-level administration
+boundaries.
 Note that not all countries have the same number of levels.
+}
 }
 \details{
 See \strong{Details} in \code{\link[=gb_get]{gb_get()}}.

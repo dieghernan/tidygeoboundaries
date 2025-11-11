@@ -40,9 +40,20 @@ run this command on each session (Similar to \code{install = FALSE}).
 }
 \examples{
 
-# Don't run this! It would modify your current state
+# Caution! This may modify your current state
+
 \dontrun{
-gb_set_cache_dir(quiet = FALSE)
+my_cache <- gb_detect_cache_dir()
+
+# Set an example cache
+ex <- file.path(tempdir(), "example", "cachenew")
+gb_set_cache_dir(ex)
+
+gb_detect_cache_dir()
+
+# Restore initial cache
+gb_set_cache_dir(my_cache)
+identical(my_cache, gb_detect_cache_dir())
 }
 
 gb_detect_cache_dir()

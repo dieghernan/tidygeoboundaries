@@ -91,7 +91,7 @@
 #'
 gb_get <- function(
   country,
-  adm_lvl = c("ADM0", "ADM1", "ADM2", "ADM3", "ADM4", "ALL"),
+  adm_lvl = c("ADM0", "ADM1", "ADM2", "ADM3", "ADM4", "ADM5", "ALL"),
   simplified = FALSE,
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
   metadata = FALSE,
@@ -166,6 +166,9 @@ hlp_gb_get_meta <- function(url) {
   q <- httr2::request(url)
   q <- httr2::req_error(q, is_error = function(x) {
     FALSE
+  })
+  q <- httr2::req_retry(q, max_tries = 3, is_transient = function(resp) {
+    httr2::resp_status(resp) %in% c(429, 500, 503)
   })
   resp <- httr2::req_perform(q)
 
@@ -271,6 +274,9 @@ hlp_gb_get_sf_single <- function(
     q <- httr2::request(url)
     q <- httr2::req_error(q, is_error = function(x) {
       FALSE
+    })
+    q <- httr2::req_retry(q, max_tries = 3, is_transient = function(resp) {
+      httr2::resp_status(resp) %in% c(429, 500, 503)
     })
     if (verbose) {
       q <- httr2::req_progress(q)

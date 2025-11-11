@@ -9,7 +9,7 @@ geoboundaries API Service \url{https://www.geoboundaries.org/api.html}.
 \usage{
 gb_get_meta(
   country = "ALL",
-  adm_lvl = c("ALL", "ADM0", "ADM1", "ADM2", "ADM3", "ADM4"),
+  adm_lvl = c("ALL", "ADM0", "ADM1", "ADM2", "ADM3", "ADM4", "ADM5"),
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative")
 )
 }
@@ -38,7 +38,7 @@ Equivalent to \code{gb_get(..., metadata = TRUE)}. See \strong{Details} in \code
 }
 \examples{
 \dontshow{if (httr2::is_online()) withAutoprint(\{ # examplesIf}
-# Get ADM4 levels
+# Get metadata of ADM4 levels
 
 library(dplyr)
 

@@ -24,7 +24,7 @@
 #' Equivalent to `gb_get(..., metadata = TRUE)`. See **Details** in [gb_get()].
 #'
 #' @examplesIf httr2::is_online()
-#' # Get ADM4 levels
+#' # Get metadata of ADM4 levels
 #'
 #' library(dplyr)
 #'
@@ -33,7 +33,7 @@
 #'
 gb_get_meta <- function(
   country = "ALL",
-  adm_lvl = c("ALL", "ADM0", "ADM1", "ADM2", "ADM3", "ADM4"),
+  adm_lvl = c("ALL", "ADM0", "ADM1", "ADM2", "ADM3", "ADM4", "ADM5"),
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative")
 ) {
   release_type <- match.arg(release_type)
