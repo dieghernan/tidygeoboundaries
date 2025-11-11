@@ -18,7 +18,8 @@ convention `object_verb()` (see
 
 #### Other changes
 
-- `get_gb_adm5()` added.
+- [`gb_get_adm5()`](https://dieghernan.github.io/geobounds/reference/gb_get_adm.md)
+  added.
 - All functions:
   - Improve detection for Antarctica and Kosovo.
   - All functions return a `MULTIPOLYGON`.
