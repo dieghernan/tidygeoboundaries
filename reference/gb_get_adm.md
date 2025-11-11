@@ -4,28 +4,28 @@
 required for all uses of this dataset.
 
 These functions are wrappers of
-[`get_gb()`](https://dieghernan.github.io/geobounds/reference/get_gb.md)
+[`gb_get()`](https://dieghernan.github.io/geobounds/reference/gb_get.md)
 for extracting any given administration level:
 
-- `get_gb_adm0()` returns the country boundary.
+- `gb_get_adm0()` returns the country boundary.
 
-- `get_gb_adm1()` returns first-level administration boundaries (e.g.
+- `gb_get_adm1()` returns first-level administration boundaries (e.g.
   States in the United States).
 
-- `get_gb_adm2()` returns second-level administration boundaries (e.g.
+- `gb_get_adm2()` returns second-level administration boundaries (e.g.
   Counties in the United States).
 
-- `get_gb_adm3()` returns third-level administration boundaries (e.g.
+- `gb_get_adm3()` returns third-level administration boundaries (e.g.
   towns or cities in some countries).
 
-- `get_gb_adm4()` returns fourth-level administration boundaries.
+- `gb_get_adm4()` returns fourth-level administration boundaries.
 
 Note that not all countries have the same number of levels.
 
 ## Usage
 
 ``` r
-get_gb_adm0(
+gb_get_adm0(
   country,
   simplified = FALSE,
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
@@ -35,7 +35,7 @@ get_gb_adm0(
   cache_dir = NULL
 )
 
-get_gb_adm1(
+gb_get_adm1(
   country,
   simplified = FALSE,
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
@@ -45,7 +45,7 @@ get_gb_adm1(
   cache_dir = NULL
 )
 
-get_gb_adm2(
+gb_get_adm2(
   country,
   simplified = FALSE,
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
@@ -55,7 +55,7 @@ get_gb_adm2(
   cache_dir = NULL
 )
 
-get_gb_adm3(
+gb_get_adm3(
   country,
   simplified = FALSE,
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
@@ -65,7 +65,7 @@ get_gb_adm3(
   cache_dir = NULL
 )
 
-get_gb_adm4(
+gb_get_adm4(
   country,
   simplified = FALSE,
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
@@ -131,7 +131,7 @@ geoboundaries API Service <https://www.geoboundaries.org/api.html>.
 ## Details
 
 See **Details** in
-[`get_gb()`](https://dieghernan.github.io/geobounds/reference/get_gb.md).
+[`gb_get()`](https://dieghernan.github.io/geobounds/reference/gb_get.md).
 
 ## References
 
@@ -143,14 +143,14 @@ administrative boundaries. *PLOS ONE* 15(4): e0231866.
 ## See also
 
 Other API functions:
-[`get_gb()`](https://dieghernan.github.io/geobounds/reference/get_gb.md),
-[`get_gb_cgaz()`](https://dieghernan.github.io/geobounds/reference/get_gb_cgaz.md)
+[`gb_get()`](https://dieghernan.github.io/geobounds/reference/gb_get.md),
+[`gb_get_cgaz()`](https://dieghernan.github.io/geobounds/reference/gb_get_cgaz.md)
 
 ## Examples
 
 ``` r
 # \donttest{
-lev2 <- get_gb_adm2(
+lev2 <- gb_get_adm2(
   c("Italia", "Suiza", "Austria"),
   simplified = TRUE
 )

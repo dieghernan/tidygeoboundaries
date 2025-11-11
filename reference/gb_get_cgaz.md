@@ -10,7 +10,7 @@ borders.
 ## Usage
 
 ``` r
-get_gb_cgaz(
+gb_get_cgaz(
   country = "ALL",
   adm_lvl = c("ADM0", "ADM1", "ADM2"),
   quiet = TRUE,
@@ -84,15 +84,15 @@ administrative boundaries. *PLOS ONE* 15(4): e0231866.
 ## See also
 
 Other API functions:
-[`get_gb()`](https://dieghernan.github.io/geobounds/reference/get_gb.md),
-[`get_gb_adm`](https://dieghernan.github.io/geobounds/reference/get_gb_adm.md)
+[`gb_get()`](https://dieghernan.github.io/geobounds/reference/gb_get.md),
+[`gb_get_adm`](https://dieghernan.github.io/geobounds/reference/gb_get_adm.md)
 
 ## Examples
 
 ``` r
 # This download may take some time
 # \dontrun{
-world <- get_gb_cgaz()
+world <- gb_get_cgaz()
 
 library(ggplot2)
 

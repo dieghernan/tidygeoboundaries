@@ -8,12 +8,12 @@ represent themselves", with no special identification of disputed areas.
 
 If you would prefer data that explicitly includes disputed areas, please
 use
-[`get_gb_cgaz()`](https://dieghernan.github.io/geobounds/reference/get_gb_cgaz.md).
+[`gb_get_cgaz()`](https://dieghernan.github.io/geobounds/reference/gb_get_cgaz.md).
 
 ## Usage
 
 ``` r
-get_gb(
+gb_get(
   country,
   adm_lvl = c("ADM0", "ADM1", "ADM2", "ADM3", "ADM4", "ALL"),
   simplified = FALSE,
@@ -107,14 +107,14 @@ administrative boundaries. *PLOS ONE* 15(4): e0231866.
 ## See also
 
 Other API functions:
-[`get_gb_adm`](https://dieghernan.github.io/geobounds/reference/get_gb_adm.md),
-[`get_gb_cgaz()`](https://dieghernan.github.io/geobounds/reference/get_gb_cgaz.md)
+[`gb_get_adm`](https://dieghernan.github.io/geobounds/reference/gb_get_adm.md),
+[`gb_get_cgaz()`](https://dieghernan.github.io/geobounds/reference/gb_get_cgaz.md)
 
 ## Examples
 
 ``` r
 # \donttest{
-sri_lanka <- get_gb(
+sri_lanka <- gb_get(
   "Sri Lanka",
   adm_lvl = "ADM3",
   simplified = TRUE
@@ -158,7 +158,7 @@ library(dplyr)
 #> The following objects are masked from 'package:base':
 #> 
 #>     intersect, setdiff, setequal, union
-get_gb(
+gb_get(
   "Sri Lanka",
   adm_lvl = "ADM3",
   metadata = TRUE

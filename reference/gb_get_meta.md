@@ -6,7 +6,7 @@ API](https://www.geoboundaries.org/api.html).
 ## Usage
 
 ``` r
-get_gb_meta(
+gb_get_meta(
   country = "ALL",
   adm_lvl = c("ALL", "ADM0", "ADM1", "ADM2", "ADM3", "ADM4"),
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative")
@@ -44,12 +44,12 @@ A tibble.
 
 ## Details
 
-Equivalent to `get_gb(..., metadata = TRUE)`. See **Details** in
-[`get_gb()`](https://dieghernan.github.io/geobounds/reference/get_gb.md).
+Equivalent to `gb_get(..., metadata = TRUE)`. See **Details** in
+[`gb_get()`](https://dieghernan.github.io/geobounds/reference/gb_get.md).
 
 ## See also
 
-[`get_gb()`](https://dieghernan.github.io/geobounds/reference/get_gb.md)
+[`gb_get()`](https://dieghernan.github.io/geobounds/reference/gb_get.md)
 
 ## Examples
 
@@ -58,7 +58,7 @@ Equivalent to `get_gb(..., metadata = TRUE)`. See **Details** in
 
 library(dplyr)
 
-get_gb_meta(adm_lvl = "ADM4") %>%
+gb_get_meta(adm_lvl = "ADM4") %>%
   glimpse()
 #> Rows: 21
 #> Columns: 32
