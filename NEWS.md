@@ -29,7 +29,7 @@ Functions for downloading data have been renamed to follow the convention
 -   `gb_get_cgaz()` get the latest data available on the repo
     <https://github.com/wmgeolab/geoBoundaries/tree/main/releaseData>.
 -   Add DOI.
--   
+
 
 # geobounds 0.0.1
 
